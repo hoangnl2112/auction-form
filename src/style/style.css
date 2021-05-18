@@ -4,6 +4,7 @@
 
 body {
     margin: 0;
+    overflow-x: hidden;
 }
 
 nav.header {
@@ -530,4 +531,29 @@ footer {
     font-size: 14px;
     line-height: 24px;
     color: #C2C3D8;
+}
+
+.r {
+    position: relative;
+}
+
+.mask-dot {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: #E33A63;
+    filter: blur(100px);
+}
+
+.mask-dot.left {
+    top: 0;
+    left: 0;
+    transform: translate(-50%, 50%);
+}
+
+.mask-dot.right {
+    bottom: 0;
+    right: 0;
+    transform: translateX(50%);
 }

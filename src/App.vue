@@ -37,7 +37,7 @@
         </div>
       </div>
     </div>
-    <div class="row-flex">
+    <div class="row-flex r">
       <div class="counter">
         <div class="row-flex">
           <h1 class="title">Crowdloan <br> Registration</h1>
@@ -82,6 +82,8 @@
           <button class="btn">Notify me</button>
         </form>
       </div>
+      <div class="mask-dot left"></div>
+      <div class="mask-dot right"></div>
     </div>
     <div class="crowdloan">
       <h2 class="title">What is a Crowdloan?</h2>
@@ -176,6 +178,8 @@
     <div class="faq">
       <div class="title">Frequently Asked Questions</div>
       <qa-item v-for="(qa, i) in qas" :key="i" :q="qa.q" :a="qa.a"/>
+      <div class="mask-dot left"></div>
+      <div class="mask-dot right"></div>
     </div>
     <div class="subscribe">
       <div class="title">Polkasmith</div>
