@@ -278,7 +278,7 @@ a {
     color: #03051A;
 }
 
-#form input {
+#form input:not([type=checkbox]) {
     width: 100%;
     min-width: 0px;
     outline: 0px;
@@ -380,23 +380,154 @@ a {
     margin: 120px 100px 80px;
     background: linear-gradient(180deg, #F7849666 0%, #05094066 75.74%, #05094066 100%);
     border-radius: 8px;
+    padding: 60px 40px;
+}
+
+.participation .title {
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 44px;
+    text-align: center;
+    margin-bottom: 60px;
 }
 
 .steps {
     display: flex;
-    color: #1b1b1b;
     text-align: start;
 }
 
-.steps .detail {
-    padding-top: 90px;
-    padding-left: 40px;
-    padding-right: 80px;
+.steps .step {
+    flex: 0 0 25%;
 }
 
-.steps .detail p {
-    font-size: 24px;
+.steps .step .title {
+    display: inline;
+    background: #E0416F;
+    border-radius: 4px;
     color: #fff;
-    margin-bottom: 8px;
-    margin-top: 0;
+    padding: 4px 6px;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.divider {
+    height: 2px;
+    background: linear-gradient(270deg, rgba(224, 65, 111, 0) 0%, #E0416F 51.79%, rgba(224, 65, 111, 0) 100%);
+
+}
+
+.info {
+    display: flex;
+}
+
+.info .detail {
+    flex: 0 0 25%;
+    padding-top: 32px;
+    padding-right: 40px;
+}
+
+.info .detail p:first-child {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0;
+}
+
+.info .detail p:last-child {
+    margin: 8px 0;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.faq {
+    background: #080C33;
+    padding: 80px 300px;
+    position: relative;
+}
+
+.faq .title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 44px;
+}
+
+.subscribe {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subscribe .title {
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+}
+
+.subscribe .subtitle {
+    margin-top: 40px;
+    margin-bottom: 16px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #C2C3D8
+}
+
+.subscribe-form {
+    display: flex;
+}
+
+.subscribe-form input {
+    border: none;
+    outline: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 24px;
+    border-radius: 4px 0 0 4px;
+}
+
+.subscribe-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 120px;
+    height: 42px;
+    background: linear-gradient(93.54deg, #00E0FF -0.69%, #FF919D 62.47%, rgba(214, 40, 96, 0.82) 100%);
+    border-radius: 0px 4px 4px 0px;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #111111;
+}
+
+.subscribe-info {
+    margin-top: 60px;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.subscribe-info a {
+    margin: 12px;
+}
+
+footer {
+    height: 50px;
+    background: #080C33;
+    mix-blend-mode: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 24px;
+    color: #C2C3D8;
 }

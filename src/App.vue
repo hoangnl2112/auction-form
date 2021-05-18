@@ -61,7 +61,7 @@
             <button style="width: 100%">Connect Polkadot.js Extension</button>
             <div class="row-flex">
               <a href="https://wiki.acala.network/karura/ksm-address/check-ksm-addr" target="_blank" rel="noopener noreferrer">Get KSM Address manually</a>
-              <switch-btn/>
+              <switch-btn style="margin: 0" v-model="manual"/>
             </div>
           </div>
           <div>
@@ -137,42 +137,63 @@
     <div class="participation">
       <h2 class="title">How do I participate?</h2>
       <div class="steps">
-        <div class="step-1">
-          <div class="detail">
-            <p>Step 1</p>
-            <p>Learn</p>
-            <div>
-              <a href="https://medium.com/acalanetwork/karuras-approach-to-the-upcoming-parachain-lease-offering-plo-on-kusama-12fbf09ee463" target="_blank" rel="noopener noreferrer" title="Learn">Learn</a>
-              how the Crowdloan works.
-            </div>
-          </div>
+        <div class="step">
+          <div class="title">Step 1</div>
         </div>
-        <div class="step-2">
-          <div class="detail">
-            <p>Step 2</p>
-            <p>Follow us</p>
-            <div>Join our <a href="https://discord.gg/HpsZx5r" target="_blank" rel="noopener noreferrer">Discord</a>, <a href="https://acala.network/newsletter-sign-up.html" target="_blank" rel="noopener noreferrer">Newsletter</a>, <a href="https://twitter.com/karuranetwork" target="_blank" rel="noopener noreferrer">Twitter</a>, and <a href="https://t.me/karuranetwork"  target="_blank" rel="noopener noreferrer">Telegram</a> for updates.</div>
-          </div>
+        <div class="step">
+          <div class="title">Step 2</div>
         </div>
-        <div class="step-3">
-          <div class="detail">
-            <p>Step 3</p>
-            <p>Unbond your KSM</p>
-            <div>If your KSM are bonded, you will need to unbond your KSM at least 7 days before the Crowdloan start date</div>
-          </div>
+        <div class="step">
+          <div class="title">Step 3</div>
         </div>
-        <div class="step-4">
-          <div class="detail">
-            <p>Step 4</p>
-            <p>Participate</p>
-            <div>When the Crowdloan starts, join the action on this acala.network website, Polkadot.js, Polkawallet.</div>
-          </div>
+        <div class="step">
+          <div class="title">Step 4</div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="info">
+        <div class="detail">
+          <p>Learn</p>
+          <p>
+            <a href="https://medium.com/acalanetwork/karuras-approach-to-the-upcoming-parachain-lease-offering-plo-on-kusama-12fbf09ee463" target="_blank" rel="noopener noreferrer" title="Learn">Learn</a>
+            how the Crowdloan works.
+          </p>
+        </div>
+        <div class="detail">
+          <p>Follow us</p>
+          <p>Join our <a href="https://discord.gg/HpsZx5r" target="_blank" rel="noopener noreferrer">Discord</a>, <a href="https://acala.network/newsletter-sign-up.html" target="_blank" rel="noopener noreferrer">Newsletter</a>, <a href="https://twitter.com/karuranetwork" target="_blank" rel="noopener noreferrer">Twitter</a>, and <a href="https://t.me/karuranetwork"  target="_blank" rel="noopener noreferrer">Telegram</a> for updates.</p>
+        </div>
+        <div class="detail">
+          <p>Unbond your KSM</p>
+          <p>If your KSM are bonded, you will need to unbond your KSM at least 7 days before the Crowdloan start date</p>
+        </div>
+        <div class="detail">
+          <p>Participate</p>
+          <p>When the Crowdloan starts, join the action on this acala.network website, Polkadot.js, Polkawallet.</p>
         </div>
       </div>
     </div>
     <div class="faq">
-      <qa-item/>
+      <div class="title">Frequently Asked Questions</div>
+      <qa-item v-for="(qa, i) in qas" :key="i" :q="qa.q" :a="qa.a"/>
     </div>
+    <div class="subscribe">
+      <div class="title">Polkasmith</div>
+      <div class="subtitle">Subscribe to the newsletter to hear about Polkasmith <br> updates and events.</div>
+      <div class="subscribe-form">
+        <input placeholder="Enter your email" v-model="subscribe"/>
+        <button class="subscribe-btn">Subscribe</button>
+      </div>
+      <div class="subscribe-info">
+        <p>Comunity</p>
+        <div class="row-flex">
+          <a href="#" target="_blank"><img alt src="./assets/telegram.svg"/></a>
+          <a href="#" target="_blank"><img alt src="./assets/twitter.svg"/></a>
+          <a href="#" target="_blank"><img alt src="./assets/linkedin.svg"/></a>
+        </div>
+      </div>
+    </div>
+    <footer>© Polkasmith 2021</footer>
   </div>
 </template>
 
@@ -187,9 +208,29 @@ export default {
   data() {
     return {
       registered: 11240,
+      manual: false,
       email: '',
       referCode: '',
-      scroll: 0
+      scroll: 0,
+      qas: [
+        {
+          q: 'When is the Karura (Acala on Kusama) Crowdloan?',
+          a: 'This is technically dependant on the Polkadot/Kusama parachain auction readiness. Join our Discord, Newsletter, Twitter, and Telegram for updates.'
+        },
+        {
+          q: 'How many KAR will I get for my KSM support?',
+          a: 'For every 1 KSM contributed, a minimum of 12 KAR is rewarded.'
+        },
+        {
+          q: 'What does it mean to unbond my KSM, and how do I do it?',
+          a: 'When nominating on Kusama, you have a delayed exit period, called the unbonding period, which serves as a cooldown. You will not be able to transfer your tokens before this period has elapsed. Read more and find instructions on the Kusama wiki.'
+        },
+        {
+          q: 'Do I have to unbond my KSM if they are on an exchange?',
+          a: 'Not necessarily. You need to contact your exchange to find out how to participate directly on the exchange. In case it is not supported on your exchange, you would need to unbound, transfer your KSM to polkadot-js extension wallet and use one of the aforementioned methods to participate.'
+        }
+      ],
+      subscribe: ''
     }
   },
   created() {
