@@ -1,6 +1,6 @@
 <template>
   <label class="switch">
-    <input type="checkbox" :checked="computedValue">
+    <input type="checkbox" :checked="computedValue" @click="toggle">
     <span class="slider round"></span>
   </label>
 </template>
@@ -19,6 +19,11 @@ export default {
       set(val) {
         this.$emit('input', val)
       }
+    }
+  },
+  methods: {
+    toggle() {
+      this.$emit('input', !this.value)
     }
   }
 }

@@ -12,177 +12,166 @@
     </nav>
     <div class="hero">
       <h1 class="hero-title">
-        Support the Pokasmith <br> Parachain Auction.
+        Join PolkaSmith on Kusama <br> Parachain Auction
       </h1>
       <p class="hero-subtitle">
-        Karura is the decentralized financial hub of Kusama. The blockchain, optimized for DeFi and <a href="#">powered by KAR,</a> was built to
-        enable scalable financial applications with micro gas fees and communication with other networks on Kusama, Polkadot, and beyond.
+        PolkaSmith is the one-stop production hub for DeFi and NFT dApps on Kusama. Its aim is to provide all the necessary features, services, integrations, and tools for all DeFi and NFT experiments, innovations, and real-world solutions. PolkaSmith is no newcomer, but actually a canary network of PolkaFoundry on Kusama.
       </p>
       <a class="hero-btn" href="#" target="_blank" rel="noopener noreferrer">Learn more</a>
     </div>
     <div class="explanation">
-      <h2 class="title">What is a Parachain Auction and how <br> does it work?</h2>
+      <h2 class="title">About Kusama Parachain Slot Auction</h2>
       <div class="content">
         <div class="item">
-          <div class="title">Gaining a slot on Kusama</div>
-          <p class="detail">Kusama is a multi-chain network based on the Polkadot code that allows blockchains to connect for interoperability, scalability, and plug-and-play network security. To gain a slot on Kusama’s network, all parachains must win an auction. Karura is crowdsourcing KSM to use in the upcoming parachain auction.</p>
+          <div class="title">Prize</div>
+          <p class="detail">Kusama is the canary network of Polkadot, a scalable heterogeneous multi-chain blockchain which consists of “relay chain + parachain”. Therefore, Kusama will roll out parachain auctions first for testing and optimization. To become a parachain on Kusama, projects like Polkasmith can access Polkadot’s security, cross-chain interoperability, on-chain governance, fork-free on-chain upgrade, scalability, low commission and many other benefits. </p>
         </div>
         <div class="item">
-          <div class="title">Crowdloan module to bootstrap Karura’s parachain auction</div>
-          <p class="detail">Karura’s crowdsourcing event will be used to participate in the Kusama parachain auction. In return for the KSM contributed by the community, Karura will issue KAR, Karura’s native token when Karura wins the parachain auction. Learn more.</p>
+          <div class="title">Bidding Methods</div>
+          <p class="detail">Parachain teams bid in the auction by specifying: (1) the slot range that they want to lease,  ranging from 1-8 lease period (each lease period is 6 weeks); (2) the amount of $KSM tokens willing to lock for the duration of the chosen range. The winning parachain is automatically on boarded at the start of the lease. The KSM amount that was bid remains locked for the duration of the lease, after which it can be unlocked.
+          </p>
         </div>
         <div class="item">
-          <div class="title">Karura launches after winning the auction</div>
-          <p class="detail">After a successful auction, Karura will launch our mainnet on Kusama following the auction and become an the DeFi hub of Kusama as planned. Learn more</p>
+          <div class="title">Crowdloan</div>
+          <p class="detail">Anyone can create a new crowd loan campaign for a parachain slot. In crowdloan, contributors agree to lock up their own $KSM to support a project winning a parachain slot. Tokens will be returned to holders following the parachain lease. Teams can reward their contributors however they see fit, and can structure their crowdloan in various ways, hosting it either natively on Kusama or on a 3rd-party platform.</p>
+        </div>
+        <div class="divider"></div>
+        <div class="notice">
+          Get to know more about Kusama Parchain Slot Auction
+          <a href="#" target="_blank">Click here</a>
         </div>
       </div>
     </div>
     <div class="row-flex r">
       <div class="counter">
-        <div class="row-flex">
-          <h1 class="title">Crowdloan <br> Registration</h1>
+        <div>
           <div class="open">
             <img alt src="./assets/fire.svg"/>
             Open now
           </div>
+          <h1 class="title">PolkaSmith Crowdloan <br> Registration</h1>
         </div>
-        <p class="subtitle">You can now connect your Polkadot.js extension to register with your email, KSM address, and referral code (optional). Registering will allow you to skip these steps when the crowdloan begins.</p>
-        <p class="subtitle">Your email will be used to inform you of any special bonuses, important deadlines, and upcoming news related to the parachain auction process.</p>
-        <div>
+        <p class="subtitle">Register with your email, Kusama address and referral code. Your email will be used to inform you of any special bonuses, important deadlines, and upcoming news related to the parachain auction process. The referral code will be used to claim your Referrals reward, in other words, to gain more $PKF.
+        </p>
+        <div style="margin-top: 24px">
           <h2 class="number">{{ registered }}</h2>
           <span>Registered</span>
         </div>
       </div>
       <div class="form">
-        <form id="form">
-          <a href="https://polkadot.js.org/extension/" target="_blank" rel="noopener noreferrer">Get Polkadot.js extension?</a>
-          <div>
-            <label>Participating KSM Address <span style="color: #e53e3e">*</span></label>
-            <button style="width: 100%">Connect Polkadot.js Extension</button>
-            <div class="row-flex">
-              <a href="https://wiki.acala.network/karura/ksm-address/check-ksm-addr" target="_blank" rel="noopener noreferrer">Get KSM Address manually</a>
-              <switch-btn style="margin: 0" v-model="manual"/>
-            </div>
+        <a href="https://polkadot.js.org/extension/" target="_blank" rel="noopener noreferrer">Get Polkadot.js extension?</a>
+        <div>
+          <label>Participating KSM Address <span style="color: #e53e3e">*</span></label>
+          <input v-if="manual" placeholder="Enter your address" v-model="address"/>
+          <template v-else>
+            <button v-if="accounts.length === 0" @click="requestExtension">Connect Polkadot.js Extension</button>
+            <select-address v-else :accounts="accounts" v-model="account"/>
+          </template>
+          <div class="row-flex">
+            <a href="https://wiki.acala.network/karura/ksm-address/check-ksm-addr" target="_blank" rel="noopener noreferrer">Get KSM Address manually</a>
+            <switch-btn style="margin: 0" v-model="manual"/>
           </div>
-          <div>
-            <label>Email <span style="color: #e53e3e">*</span></label>
-            <input placeholder="Enter your email" type="email" v-model="email"/>
-          </div>
-          <div>
-            <label>Reference code (Optional)</label>
-            <input placeholder="Enter your reference code" v-model="referCode"/>
-          </div>
-          <div class="rule">
-            <checkbox/>
-            <div>I have read and accept the
-              <a class="css-7rgjox" target="_blank" rel="noopener noreferrer" href="/privacy">Privacy Policy.</a>
+        </div>
+        <div>
+          <label>Email <span style="color: #e53e3e">*</span></label>
+          <input placeholder="Enter your email" type="email" v-model="email"/>
+        </div>
+        <div>
+          <label>Reference code (Optional)</label>
+          <input placeholder="Enter your reference code" v-model="referCode"/>
+        </div>
+        <div class="rule">
+          <checkbox/>
+          <div>I have read and accept the
+            <a class="css-7rgjox" target="_blank" rel="noopener noreferrer" href="/privacy">Privacy Policy.</a>
               and I agree to receive email communications about Karura and Acala, including exclusive launch updates and liquidity provider program.
-            </div>
           </div>
-          <button class="btn">Notify me</button>
-        </form>
+        </div>
+        <button class="btn">Notify me</button>
       </div>
       <div class="mask-dot left"></div>
       <div class="mask-dot right"></div>
     </div>
     <div class="crowdloan">
-      <h2 class="title">What is a Crowdloan?</h2>
+      <h2 class="title">PolkaSmith Crowd Loan Reward</h2>
       <div class="row-flex align-items-center">
         <div class="item">
-          <img alt src="./assets/crowdloan.svg"/>
-          <div class="title">Crowdsourced Network Security</div>
-          <p>KSM holders lock their tokens on Kusama for a period of time (6, 12 or 24 months) to help Karura lease a parachain slot and gain access to Kusama’s plug-and-play security. In return for KSM holders’ loan, KAR (Karura’s native token) will be distributed to participants.
-          </p>
+          <img alt src="./assets/reward1.svg"/>
+          <div class="title">$PKF Reward</div>
+          <p>Every KSM that supports PolkaSmith in the Kusama Parachain Slot auction through the Crowdloan will be entitled to a decent number of $PKF as rewards (TBA). Note that if PolkaSmith wins Kusama Slot, the value for $PKF may scale significantly.</p>
         </div>
         <div class="item">
-          <img alt src="./assets/crowdloan.svg"/>
-          <div class="title">Community-backed Launch</div>
-          <p>Tokens will be returned to holders following parachain lease, with a guarantee of receiving the KSM principal back. It can be seen as a community-backed launch for individuals looking to contribute to the evolution of Kusama’s network and parachains.
-          </p>
+          <img alt src="./assets/reward2.svg"/>
+          <div class="title">Referrals</div>
+          <p>If a crowdloan participant invites an additional participant who makes a contribution, they will each receive an additional reward (TBA). E.g. you invite your friend, so additional reward, let say equivalent to 10% your friend incentives split for both you and your friend.</p>
         </div>
         <div class="item">
-          <img alt src="./assets/crowdloan.svg"/>
-          <div class="title">Fair Network Bootstrapping</div>
-          <p>The KAR distributed to participants will be vested over a period of time, but the full balance can be used to participate in governance and other activities besides transferring. This helps us to build a strong and well-intentioned community from the ground up.
-          </p>
+          <img alt src="./assets/reward3.svg"/>
+          <div class="title">Other perks</div>
+          <p>PolkaSmith supporters will get up to <br/> 25 ePKF/ 1 KSM and gain high tier tickets for IDOs in the Red Kite launchpad (a sister network of PolkaSmith). In the case PolkaSmith fails to lease a parachain slot, this perk is still guaranteed. (ePKF = Equivalent PKF).</p>
         </div>
       </div>
     </div>
     <div class="section">
-      <h2 class="title">Why host a Crowdloan and <br/> how does it work?</h2>
-      <div class="section-main">
-        <img alt src="./assets/mask-crowdloan.svg"/>
-        <div>
-          <div class="section-item">
-            <div class="title">Parachain Auction</div>
-            <p>Kusama is a sharded, multi-chain network that allows blockchains to connect for interoperability, scalability, and plug-and-play network security. Kusama is the cousin network of Polkadot. To join Kusama’s network, all parachains must participate in and win a unpermissioned candle auction to secure a slot on the network. Parachains can choose to raise KSM in a variety of ways in order to participate in the auction.
-            </p>
-          </div>
-          <div class="section-item">
-            <div class="title">Karura’s Crowdloan</div>
-            <p>Karura has chosen to host an Crowdloan to trustlessly crowdsource KSM, which will be used to participate in the Kusama parachain auction. These KSM will be bonded, or ‘locked’, in the Kusama Relay Chain for the duration of Karura’s parachain lease.
-            </p>
-          </div>
-          <div class="section-item">
-            <div class="title">Karura (KAR) Distribution</div>
-            <p>In the event Karura succeeds in its auction bid and secures a Kusama parachain lease, and network genesis of Karura occurs on Kusama, Karura will gift KAR to Karura supporters’. Kusama supporters will be distributed KAR in the same account they used to bond KSM in support of Karura’s parachain lease. The amount of KAR distributed is dependant on the level of support provided.
-            </p>
-          </div>
-          <div class="section-item">
-            <div class="title">Acala & Karura - Sister Networks</div>
-            <p>Acala will operate its DeFi parachains on Polkadot and Kusama to serve both communities. Acala and Karura will operate in parallel, and will eventually be interoperable once Polkadot and Kusama are bridged.
-            </p>
-          </div>
-        </div>
+      <h2 class="title">Crowdloan <br/>Participation Methods</h2>
+      <img alt src="./assets/mask-crowdloan.svg"/>
+      <div class="section-item">
+        <div class="title">STEP 1- Register and Subscribe</div>
+        <p>After your registration, we will inform you of PolkaSmith's latest auction plan through email. You may also want to subscribe to our
+          <a href="#" target="_blank">Twitter</a>, <a href="#" target="_blank">Telegram</a>
+              and <a href="#" target="_blank">Medium</a> for PolkaSmith for updates.
+        </p>
+      </div>
+      <div class="section-item">
+        <div class="title">STEP 2- Prepare your KSM</div>
+        <p>If your KSM are bonded, you will need to unbond your KSM at least 7 days before the Crowdloan start date</p>
+      </div>
+      <div class="section-item">
+        <div class="title">STEP 3 - Participation</div>
+        <p>When the Crowdloan starts, join the action on any of our participation channels (mentioned below).</p>
       </div>
     </div>
     <div class="participation">
-      <h2 class="title">How do I participate?</h2>
-      <div class="steps">
-        <div class="step">
-          <div class="title">Step 1</div>
+      <h2 class="title">Participation channels</h2>
+      <div class="channels">
+        <div class="channel">
+          <img alt src="./assets/redkite.png"/>
+          <div>
+            <p>Redkite</p>
+            <p>Upcoming</p>
+          </div>
         </div>
-        <div class="step">
-          <div class="title">Step 2</div>
+        <div class="channel">
+          <img alt src="./assets/kusama.png"/>
+          <div>
+            <p>Kusama</p>
+            <p>Upcoming</p>
+          </div>
         </div>
-        <div class="step">
-          <div class="title">Step 3</div>
+        <div class="channel">
+          <img alt src="./assets/exchange.png"/>
+          <div>
+            <p>Top-tier exchange</p>
+            <p>TBA</p>
+          </div>
         </div>
-        <div class="step">
-          <div class="title">Step 4</div>
-        </div>
-      </div>
-      <div class="divider"></div>
-      <div class="info">
-        <div class="detail">
-          <p>Learn</p>
-          <p>
-            <a href="https://medium.com/acalanetwork/karuras-approach-to-the-upcoming-parachain-lease-offering-plo-on-kusama-12fbf09ee463" target="_blank" rel="noopener noreferrer" title="Learn">Learn</a>
-            how the Crowdloan works.
-          </p>
-        </div>
-        <div class="detail">
-          <p>Follow us</p>
-          <p>Join our <a href="https://discord.gg/HpsZx5r" target="_blank" rel="noopener noreferrer">Discord</a>, <a href="https://acala.network/newsletter-sign-up.html" target="_blank" rel="noopener noreferrer">Newsletter</a>, <a href="https://twitter.com/karuranetwork" target="_blank" rel="noopener noreferrer">Twitter</a>, and <a href="https://t.me/karuranetwork"  target="_blank" rel="noopener noreferrer">Telegram</a> for updates.</p>
-        </div>
-        <div class="detail">
-          <p>Unbond your KSM</p>
-          <p>If your KSM are bonded, you will need to unbond your KSM at least 7 days before the Crowdloan start date</p>
-        </div>
-        <div class="detail">
-          <p>Participate</p>
-          <p>When the Crowdloan starts, join the action on this acala.network website, Polkadot.js, Polkawallet.</p>
+        <div class="channel">
+          <img alt src="./assets/redkite.png"/>
+          <div>
+            <p>Redkite</p>
+            <p>Upcoming</p>
+          </div>
         </div>
       </div>
     </div>
     <div class="faq">
       <div class="title">Frequently Asked Questions</div>
-      <qa-item v-for="(qa, i) in qas" :key="i" :q="qa.q" :a="qa.a"/>
+      <qa-item v-for="(qa, i) in qas" :key="i" :q="qa.q" :a="qa.a" :note="qa.note"/>
       <div class="mask-dot left"></div>
       <div class="mask-dot right"></div>
     </div>
     <div class="subscribe">
-      <div class="title">Polkasmith</div>
+      <img alt src="./assets/logo2.png"/>
       <div class="subtitle">Subscribe to the newsletter to hear about Polkasmith <br> updates and events.</div>
       <div class="subscribe-form">
         <input placeholder="Enter your email" v-model="subscribe"/>
@@ -202,28 +191,30 @@
 </template>
 
 <script>
+import { web3Accounts, web3Enable } from "@polkadot/extension-dapp";
 
 import Checkbox from "./components/Checkbox";
 import QaItem from "./components/QaItem";
 import SwitchBtn from "./components/SwitchBtn";
+import SelectAddress from "./components/SelectAddress";
+
 export default {
   name: 'App',
-  components: {SwitchBtn, QaItem, Checkbox},
+  components: {SelectAddress, SwitchBtn, QaItem, Checkbox},
   data() {
     return {
-      registered: 11240,
+      registered: '11,240',
+      accounts: [],
+      account: null,
+      address: '',
       manual: false,
       email: '',
       referCode: '',
       scroll: 0,
       qas: [
         {
-          q: 'When is the Karura (Acala on Kusama) Crowdloan?',
-          a: 'This is technically dependant on the Polkadot/Kusama parachain auction readiness. Join our Discord, Newsletter, Twitter, and Telegram for updates.'
-        },
-        {
-          q: 'How many KAR will I get for my KSM support?',
-          a: 'For every 1 KSM contributed, a minimum of 12 KAR is rewarded.'
+          q: 'When is the PolkaSmith (PolkaFoundry on Kusama) Crowdloan?',
+          a: 'This is technically dependent on the Polkadot/Kusama parachain auction readiness. Subscribe to our Twitter, Telegram and Medium for PolkaSmith for updates.'
         },
         {
           q: 'What does it mean to unbond my KSM, and how do I do it?',
@@ -232,12 +223,69 @@ export default {
         {
           q: 'Do I have to unbond my KSM if they are on an exchange?',
           a: 'Not necessarily. You need to contact your exchange to find out how to participate directly on the exchange. In case it is not supported on your exchange, you would need to unbound, transfer your KSM to polkadot-js extension wallet and use one of the aforementioned methods to participate.'
+        },
+        {
+          q: 'My friend filled out my referral code. Will we both get $PKF?',
+          a: 'Yes.'
+        },
+        {
+          q: 'Can the pledged KSM be withdrawn at any time?',
+          a: 'The KSM pledged by ordinary users will be locked. After the slot auction is over, KSM will return the original way to the user.',
+          note: 'If PolkaSmith wins the slot auction, the KSM of each node will continue to lock up positions.'
+        },
+        {
+          q: 'Will my KSM be returned after the parachain lease ends?',
+          a: 'Yes, your KSM will be automatically returned to you when the parachain lease ends.'
+        },
+        {
+          q: 'What if PolkaSmith doesn’t win the parachain auction - what happens to my KSM?',
+          a: 'If PolkaSmith does not win the initial auction, it will continue to bid in the subsequent auctions. If PolkaSmith fails to win any auction, then it will end the crowdloan and return all funds to holders.'
+        },
+        {
+          q: 'Where to trade my $PKF reward?',
+          a: 'In Uniswap or Gate.io.'
         }
       ],
       subscribe: ''
     }
   },
   created() {
+    document.addEventListener('scroll', () => {
+      const navbar = document.querySelector('nav.header');
+      navbar.classList.add('border');
+      this.scroll++;
+      setTimeout(() => {
+        this.scroll --;
+        setTimeout(() => {
+          if(document.documentElement.scrollTop === 0) navbar.classList.remove('border');
+        }, 500);
+      }, 500);
+    })
+  },
+  methods: {
+    showError(error) {
+      console.log(error)
+    },
+    async requestExtension() {
+      try {
+        const extensions = await web3Enable('PolkaSmith Auction')
+        if (extensions.length === 0) {
+          this.showError("Polkadot.js Extension is not installed!")
+          return
+        }
+        const accounts = await web3Accounts()
+        if (accounts.length === 0) {
+          this.showError("KSM wallet list is empty. Please create or import your wallet!")
+          return
+        }
+        this.accounts = accounts
+        this.account = accounts[0]
+        this.address = accounts[0].address
+      } catch(e) {
+        console.error(e)
+        this.showError("You have denied access to Polkadot.js Extension. Please accept access to Polkadot.js Extension at \"Manage Website Access\" then reload this page.",)
+      }
+    }
   }
 }
 </script>
@@ -252,6 +300,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   background: #0f133e;
   color: #fff;
+  overflow-x: hidden;
 }
 
 @import "style/style.css";

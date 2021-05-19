@@ -1,5 +1,5 @@
 <template>
-  <input type="checkbox"/>
+  <input class="checkbox" type="checkbox"/>
 </template>
 
 <script>
@@ -9,5 +9,7 @@ export default {
 </script>
 
 <style scoped>
-
+  .checkbox {
+    margin:  8px;
+  }
 </style>
