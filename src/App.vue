@@ -10,6 +10,7 @@
       </ul>
       <a class="header-btn" href="#">Let's chat now</a>
     </nav>
+    <router-view></router-view>
     <div class="hero">
       <h1 class="hero-title">
         Join PolkaSmith on Kusama <br> Parachain Auction
@@ -188,6 +189,7 @@
       </div>
     </div>
     <footer>© Polkasmith 2021</footer>
+    <notifications :duration=5000 position="bottom right" />
   </div>
 </template>
 
@@ -200,52 +202,7 @@ export default {
   name: 'App',
   components: {QaItem, Form},
   data() {
-    return {
-      registered: '11,240',
-      accounts: [],
-      account: null,
-      address: '',
-      manual: false,
-      email: '',
-      referCode: '',
-      scroll: 0,
-      qas: [
-        {
-          q: 'When is the PolkaSmith (PolkaFoundry on Kusama) Crowdloan?',
-          a: 'This is technically dependent on the Polkadot/Kusama parachain auction readiness. Subscribe to our Twitter, Telegram and Medium for PolkaSmith for updates.'
-        },
-        {
-          q: 'What does it mean to unbond my KSM, and how do I do it?',
-          a: 'When nominating on Kusama, you have a delayed exit period, called the unbonding period, which serves as a cooldown. You will not be able to transfer your tokens before this period has elapsed. Read more and find instructions on the Kusama wiki.'
-        },
-        {
-          q: 'Do I have to unbond my KSM if they are on an exchange?',
-          a: 'Not necessarily. You need to contact your exchange to find out how to participate directly on the exchange. In case it is not supported on your exchange, you would need to unbound, transfer your KSM to polkadot-js extension wallet and use one of the aforementioned methods to participate.'
-        },
-        {
-          q: 'My friend filled out my referral code. Will we both get $PKF?',
-          a: 'Yes.'
-        },
-        {
-          q: 'Can the pledged KSM be withdrawn at any time?',
-          a: 'The KSM pledged by ordinary users will be locked. After the slot auction is over, KSM will return the original way to the user.',
-          note: 'If PolkaSmith wins the slot auction, the KSM of each node will continue to lock up positions.'
-        },
-        {
-          q: 'Will my KSM be returned after the parachain lease ends?',
-          a: 'Yes, your KSM will be automatically returned to you when the parachain lease ends.'
-        },
-        {
-          q: 'What if PolkaSmith doesn’t win the parachain auction - what happens to my KSM?',
-          a: 'If PolkaSmith does not win the initial auction, it will continue to bid in the subsequent auctions. If PolkaSmith fails to win any auction, then it will end the crowdloan and return all funds to holders.'
-        },
-        {
-          q: 'Where to trade my $PKF reward?',
-          a: 'In Uniswap or Gate.io.'
-        }
-      ],
-      subscribe: ''
-    }
+    return {}
   },
   async created() {
     const res = await Count();
@@ -262,11 +219,6 @@ export default {
         }, 500);
       }, 500);
     })
-  },
-  methods: {
-    showError(error) {
-      console.log(error)
-    },
   }
 }
 </script>
