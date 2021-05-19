@@ -138,13 +138,13 @@ export default {
     margin: 8px 0 0;
     font-size: 14px;
     line-height: 24px;
-    color: #C2C3D8;
+    color: #D9DAF2;
     transition: all 0.15s;
   }
 
   .note {
     font-size: 12px;
     font-style: italic;
-    color: #C2C3D890
+    color: #D9DAF290
   }
 </style>

@@ -32,6 +32,16 @@ nav.header {
     align-items: center;
     justify-content: space-around;
     z-index: 10;
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 nav.border {
@@ -83,11 +93,45 @@ nav.border {
     text-align: center;
 }
 
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 .hero-title {
     font-size: 60px;
     line-height: 60px;
     font-weight: 400;
     margin-bottom: 0;
+    animation: slideLeft 1s;
 }
 
 .hero-subtitle {
@@ -95,8 +139,9 @@ nav.border {
     margin-bottom: 40px;
     font-size: 14px;
     line-height: 24px;
-    color: #C2C3D8;
+    color: #D9DAF2;
     max-width: 700px;
+    animation: slideRight 1s;
 }
 
 a.hero-btn {
@@ -110,6 +155,7 @@ a.hero-btn {
     color: #03051A;
     font-weight: 600;
     text-decoration: none;
+    animation: slideUp 1s;
 }
 
 a {
@@ -166,7 +212,7 @@ a {
     margin-top: 8px;
     font-size: 14px;
     line-height: 24px;
-    color: #C2C3D8;
+    color: #D9DAF2;
 }
 
 .explanation .divider {
@@ -226,7 +272,7 @@ a {
     margin-top: 20px;
     font-size: 14px;
     line-height: 24px;
-    color: #C2C3D8;
+    color: #D9DAF2;
 }
 
 .counter .number {
@@ -352,7 +398,7 @@ a {
 .form .rule > div {
     font-size: 14px;
     line-height: 24px;
-    color: #C2C3D8;
+    color: #D9DAF2;
 }
 
 .crowdloan {
@@ -387,7 +433,7 @@ a {
 .crowdloan .item p {
     font-size: 14px;
     line-height: 24px;
-    color: #C2C3D8;
+    color: #D9DAF2;
 }
 
 .section {
@@ -434,7 +480,7 @@ a {
 .section-item p {
     font-size: 14px;
     line-height: 24px;
-    color: #C2C3D8;
+    color: #D9DAF2;
     margin: 0;
 }
 
@@ -515,7 +561,7 @@ a {
     font-size: 16px;
     line-height: 24px;
     text-align: center;
-    color: #C2C3D8
+    color: #D9DAF2
 }
 
 .subscribe-form {
@@ -571,7 +617,7 @@ footer {
     justify-content: center;
     font-size: 14px;
     line-height: 24px;
-    color: #C2C3D8;
+    color: #D9DAF2;
 }
 
 .r {
