@@ -10,6 +10,6 @@ export default {
 
 <style scoped>
   .checkbox {
-    margin:  8px;
+    margin: 5px;
   }
 </style>
