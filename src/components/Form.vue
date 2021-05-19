@@ -29,7 +29,7 @@
       <input v-model="isAgree" type="checkbox"/>
       <div>I have read and accept the
         <a class="css-7rgjox" target="_blank" rel="noopener noreferrer" href="/privacy">Privacy Policy.</a>
-        and I agree to receive email communications about Karura and Acala, including exclusive launch updates and liquidity provider program.
+        and I agree to receive email communications about PolkaSmith and PolkaFoundry, including exclusive launch updates and liquidity provider program.
       </div>
     </div>
     <button type="submit" class="btn">Notify me</button>
@@ -142,63 +142,8 @@ export default {
 </script>
 
 <style scoped>
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 32px !important;
-  height: 16px !important;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 12px;
-  width: 12px;
-  left: 2px;
-  bottom: 2px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #14C4FF;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #14C4FF;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(16px);
-  -ms-transform: translateX(16px);
-  transform: translateX(16px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 16px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
+  form {
+    display: grid;
+    grid-gap: 12px;
+  }
 </style>

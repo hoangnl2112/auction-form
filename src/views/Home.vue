@@ -65,38 +65,7 @@
         </div>
       </div>
       <div class="form">
-        <a href="https://polkadot.js.org/extension/" target="_blank" rel="noopener noreferrer">Get Polkadot.js
-          extension?</a>
-        <div>
-          <label>Participating KSM Address <span style="color: #e53e3e">*</span></label>
-          <input v-if="manual" placeholder="Enter your address" v-model="address"/>
-          <template v-else>
-            <button v-if="accounts.length === 0" @click="requestExtension">Connect Polkadot.js Extension</button>
-            <select-address v-else :accounts="accounts" v-model="account"/>
-          </template>
-          <div class="row-flex">
-            <a href="https://wiki.acala.network/karura/ksm-address/check-ksm-addr" target="_blank"
-               rel="noopener noreferrer">Get KSM Address manually</a>
-            <switch-btn style="margin: 0" v-model="manual"/>
-          </div>
-        </div>
-        <div>
-          <label>Email <span style="color: #e53e3e">*</span></label>
-          <input placeholder="Enter your email" type="email" v-model="email"/>
-        </div>
-        <div>
-          <label>Reference code (Optional)</label>
-          <input placeholder="Enter your reference code" v-model="referCode"/>
-        </div>
-        <div class="rule">
-          <checkbox/>
-          <div>I have read and accept the
-            <a class="css-7rgjox" target="_blank" rel="noopener noreferrer" href="/privacy">Privacy Policy.</a>
-            and I agree to receive email communications about Karura and Acala, including exclusive launch updates and
-            liquidity provider program.
-          </div>
-        </div>
-        <button class="btn">Notify me</button>
+        <Form/>
       </div>
       <div class="mask-dot left"></div>
       <div class="mask-dot right"></div>
@@ -135,7 +104,7 @@
         <p>After your registration, we will inform you of PolkaSmith's latest auction plan through email. You may also
           want to subscribe to our
           <a href="#" target="_blank">Twitter</a>, <a href="#" target="_blank">Telegram</a>
-          and <a href="#" target="_blank">Medium</a> for PolkaSmith for updates.
+          and <a href="#" target="_blank">Medium</a> for PolkaSmith and PolkaFoundry for updates.
         </p>
       </div>
       <div class="section-item">
@@ -206,15 +175,13 @@
 </template>
 
 <script>
-import {web3Accounts, web3Enable} from "@polkadot/extension-dapp";
-import SelectAddress from "@/components/SelectAddress";
-import SwitchBtn from "@/components/SwitchBtn";
-import QaItem from "@/components/QaItem";
-import Checkbox from "@/components/Checkbox";
 
+import Form from '@/components/Form';
+import { Count } from '@/services/auctions';
+import QaItem from "@/components/QaItem";
 export default {
   name: "Home",
-  components: {SelectAddress, SwitchBtn, QaItem, Checkbox},
+  components: {QaItem, Form},
   data() {
     return {
       registered: '11,240',
@@ -224,7 +191,6 @@ export default {
       manual: false,
       email: '',
       referCode: '',
-      scroll: 0,
       qas: [
         {
           q: 'When is the PolkaSmith (PolkaFoundry on Kusama) Crowdloan?',
@@ -263,29 +229,13 @@ export default {
       subscribe: ''
     }
   },
+  async created() {
+    const res = await Count();
+    this.registered = res.total;
+  },
   methods: {
     showError(error) {
       console.log(error)
-    },
-    async requestExtension() {
-      try {
-        const extensions = await web3Enable('PolkaSmith Auction')
-        if (extensions.length === 0) {
-          this.showError("Polkadot.js Extension is not installed!")
-          return
-        }
-        const accounts = await web3Accounts()
-        if (accounts.length === 0) {
-          this.showError("KSM wallet list is empty. Please create or import your wallet!")
-          return
-        }
-        this.accounts = accounts
-        this.account = accounts[0]
-        this.address = accounts[0].address
-      } catch (e) {
-        console.error(e)
-        this.showError("You have denied access to Polkadot.js Extension. Please accept access to Polkadot.js Extension at \"Manage Website Access\" then reload this page.",)
-      }
     }
   }
 }
