@@ -83,7 +83,7 @@
         <div class="rule">
           <checkbox/>
           <div>I have read and accept the
-            <a class="css-7rgjox" target="_blank" rel="noopener noreferrer" href="/privacy">Privacy Policy.</a>
+            <a class="css-7rgjox" target="_blank" rel="noopener noreferrer" href="/privacy">Privacy Policy</a>
               and I agree to receive email communications about Karura and Acala, including exclusive launch updates and liquidity provider program.
           </div>
         </div>
@@ -94,7 +94,7 @@
     </div>
     <div class="crowdloan">
       <h2 class="title">PolkaSmith Crowd Loan Reward</h2>
-      <div class="row-flex align-items-center">
+      <div class="row-flex">
         <div class="item">
           <img alt src="./assets/reward1.svg"/>
           <div class="title">$PKF Reward</div>
