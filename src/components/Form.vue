@@ -14,10 +14,6 @@
       </div>
     </div>
     <div>
-      <label>ERC20 address <span style="color: #e53e3e">*</span></label>
-      <input placeholder="Enter your ERC20 wallet to get rewarded" type="text" v-model="erc20_address" required/>
-    </div>
-    <div>
       <label>Email <span style="color: #e53e3e">*</span></label>
       <input placeholder="Enter your email" type="email" v-model="email" required/>
     </div>
@@ -32,6 +28,13 @@
         and I agree to receive email communications about PolkaSmith and PolkaFoundry, including exclusive launch updates and liquidity provider program.
       </div>
     </div>
+    <vue-hcaptcha
+      sitekey="e8140feb-2d1f-4393-b4d8-5c83c982b919"
+      @verify="onVerify"
+      @expired="onExpire"
+      @challengeExpired="onExpire"
+      @error="onError"
+    />
     <button type="submit" class="btn">Notify me</button>
   </form>
 </template>
@@ -43,10 +46,11 @@ import SwitchBtn from "@/components/SwitchBtn";
 import SelectAddress from "@/components/SelectAddress";
 import { Add } from '@/services/auctions';
 import { GenerateCode } from '@/services/referal-code​';
+import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
 
 export default {
   name: "Form",
-  components: { SelectAddress, SwitchBtn },
+  components: { SelectAddress, SwitchBtn, VueHcaptcha },
   data() {
     return {
       your_referrer_code: '',
@@ -54,10 +58,14 @@ export default {
       account: null,
       manual: false,
       ksm_address: '',
-      erc20_address: '',
       email: '',
       referrer_code: '',
       isAgree: false,
+      verified: false,
+      expired: false,
+      token: null,
+      eKey: null,
+      error: null,
     }
   },
 
@@ -78,43 +86,82 @@ export default {
         console.error(e);
       }
     },
+    onVerify(token, ekey) {
+      this.verified = true;
+      this.token = token;
+      this.eKey = ekey;
+    },
+    onExpire() {
+      this.verified = false;
+      this.token = null;
+      this.eKey = null;
+      this.expired = true;
+      return this.$notify({
+        type: 'error',
+        text: `Captcha Expired`});
+    },
+    onError(err) {
+      this.token = null;
+      this.eKey = null;
+      this.error = err;
+      return this.$notify({
+        type: 'error',
+        text: `Captcha error:  ${err}`});
+    },
 
     async submit() {
       // validate data
+
       if (!checkEmail(this.email)) {
-        return alert('Email not valid');
+        return this.$notify({
+          type: 'error',
+          text: 'Email not valid'});
       }
 
       if (!this.ksm_address) {
-        return alert('Please enter KSM address');
+        return this.$notify({
+          type: 'error',
+          text: 'Please enter KSM address'});
       }
 
-      if (!this.erc20_address) {
-        return alert('Please enter ERC20 address');
+      if (!this.verified) {
+        return this.$notify({
+          type: 'error',
+          text: 'Please complete captcha verify'});
+      }
+
+      if (!this.isAgree) {
+        return this.$notify({
+          type: 'error',
+          text: 'Please accept the Privacy Policy'});
       }
 
       try {
         const res = await Add({
           ksm_address: this.ksm_address,
-          erc20_address: this.erc20_address,
           email: this.email,
           referrer_code: this.referrer_code,
           your_referrer_code: this.your_referrer_code,
+          captcha_code: this.token
         });
 
         if (res) {
           // reset form
           this.ksm_address = '';
-          this.erc20_address = '';
           this.email = '';
           this.referrer_code = '';
           this.your_referrer_code = '';
           await this.GenerateCodeYourCode();
         }
-        alert('Done');
+        return this.$notify({
+          type: 'success',
+          text: 'Register successful'});
       } catch (e) {
-        alert(e.message);
+        return this.$notify({
+          type: 'error',
+          text: e && e.response && e.response.data && e.response.data.message ? e.response.data.message : e.toString() });
       }
+
     },
 
     async requestExtension() {
@@ -133,7 +180,6 @@ export default {
         this.account = accounts[0];
         this.ksm_address = accounts[0].address;
       } catch(e) {
-        console.error(e)
         this.showError("You have denied access to Polkadot.js Extension. Please accept access to Polkadot.js Extension at \"Manage Website Access\" then reload this page.",)
       }
     }
