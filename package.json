@@ -11,6 +11,7 @@
     "@hcaptcha/vue-hcaptcha": "^0.3.0",
     "@polkadot/api": "^4.10.1",
     "@polkadot/extension-dapp": "^0.37.2",
+    "@vue-polkadot/vue-identicon": "0.0.8",
     "axios": "^0.21.1",
     "bn.js": "^4.12.0",
     "core-js": "^3.6.5",

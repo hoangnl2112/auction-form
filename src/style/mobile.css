@@ -12,10 +12,6 @@
         display: none;
     }
 
-    nav.header .header-btn {
-        display: none;
-    }
-
     .hero-title {
         font-size: 36px;
         line-height: 44px;
@@ -128,6 +124,7 @@
 
     .section-item {
         padding: 24px 0 12px;
+        text-align: center;
     }
 
     .section-item .title {

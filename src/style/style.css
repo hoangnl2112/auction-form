@@ -30,7 +30,8 @@ nav.header {
     top: -1px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 0 var(--padding-horizon-s);
     z-index: 10;
     animation: fadeIn 1s;
 }

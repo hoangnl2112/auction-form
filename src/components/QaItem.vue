@@ -111,6 +111,7 @@ export default {
     font-weight: bold;
     font-size: 16px;
     line-height: 24px;
+    cursor: pointer;
   }
 
   .q img {
