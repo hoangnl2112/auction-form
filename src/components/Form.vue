@@ -28,14 +28,17 @@
         and I agree to receive email communications about PolkaSmith and PolkaFoundry, including exclusive launch updates and liquidity provider program.
       </div>
     </div>
-    <vue-hcaptcha
-      sitekey="e8140feb-2d1f-4393-b4d8-5c83c982b919"
-      @verify="onVerify"
-      @expired="onExpire"
-      @challengeExpired="onExpire"
-      @error="onError"
-    />
     <button type="submit" class="btn">Notify me</button>
+    <vue-hcaptcha
+        sitekey="e8140feb-2d1f-4393-b4d8-5c83c982b919"
+        @verify="onVerify"
+        ref="captcha"
+        size="invisible"
+        @reset="captchaReset"
+        @expired="onExpire"
+        @challengeExpired="onExpire"
+        @error="onError"
+    />
   </form>
 </template>
 
@@ -86,11 +89,18 @@ export default {
         console.error(e);
       }
     },
-    onVerify(token, ekey) {
+    async onVerify(token, ekey) {
       this.verified = true;
       this.token = token;
       this.eKey = ekey;
+      await this.submit();
     },
+    captchaReset() {
+      this.verified = false;
+      this.token = null;
+      this.eKey = null;
+    },
+
     onExpire() {
       this.verified = false;
       this.token = null;
@@ -100,6 +110,7 @@ export default {
         type: 'error',
         text: `Captcha Expired`});
     },
+
     onError(err) {
       this.token = null;
       this.eKey = null;
@@ -125,9 +136,9 @@ export default {
       }
 
       if (!this.verified) {
-        return this.$notify({
-          type: 'error',
-          text: 'Please complete captcha verify'});
+        if (!this.verified) {
+          return this.$refs.captcha.execute();
+        }
       }
 
       if (!this.isAgree) {
@@ -160,6 +171,8 @@ export default {
         return this.$notify({
           type: 'error',
           text: e && e.response && e.response.data && e.response.data.message ? e.response.data.message : e.toString() });
+      } finally {
+        this.$refs.captcha.reset();
       }
 
     },

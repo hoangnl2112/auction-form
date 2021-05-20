@@ -1,3 +1,3 @@
 export default {
-    api_url: 'https://api-pre-auction.hpstar.net',
+    api_url: 'https://crowdloan.polkafoundry.com',
 };
