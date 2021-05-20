@@ -60,7 +60,7 @@
           process. The referral code will be used to claim your Referrals reward, in other words, to gain more $PKF.
         </p>
         <div style="margin-top: 24px">
-          <h2 class="number">{{ registered }}</h2>
+          <h2 class="number">{{ registered | displayNumber }}</h2>
           <span>Registered</span>
         </div>
       </div>
@@ -186,6 +186,11 @@ import QaItem from "@/components/QaItem";
 export default {
   name: "Home",
   components: {QaItem, Form},
+  filters: {
+    displayNumber(v) {
+      return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+  },
   data() {
     return {
       registered: '11,240',
