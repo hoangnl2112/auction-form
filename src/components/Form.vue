@@ -140,11 +140,17 @@ export default {
           return this.$refs.captcha.execute();
         }
       }
-
+      
       if (!this.isAgree) {
         return this.$notify({
           type: 'error',
           text: 'Please accept the Privacy Policy'});
+      }
+
+      if (!this.verified) {
+        if (!this.verified) {
+          return this.$refs.captcha.execute();
+        }
       }
 
       try {
