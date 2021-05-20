@@ -2,14 +2,14 @@
     <div class="policy-container">
       <div class="policy-link">
         <ul class="policy-menu">
-          <li :class="selectedMenu === 1 ? 'policy-selected' : ''"><a @click="selectedMenu = 1" href="#policy-1">1. Reasons We Collect Your Data</a></li>
-          <li :class="selectedMenu === 2 ? 'policy-selected' : ''"><a @click="selectedMenu = 2" href="#policy-2">2. Types of Data We Collect</a></li>
-          <li :class="selectedMenu === 3 ? 'policy-selected' : ''"><a @click="selectedMenu = 3" href="#policy-3">3. Collection of Your Data</a></li>
-          <li :class="selectedMenu === 4 ? 'policy-selected' : ''"><a @click="selectedMenu = 4" href="#policy-4">4. Management of Your Data</a></li>
-          <li :class="selectedMenu === 5 ? 'policy-selected' : ''"><a @click="selectedMenu = 5" href="#policy-5">5. Security of Your Data</a></li>
-          <li :class="selectedMenu === 6 ? 'policy-selected' : ''"><a @click="selectedMenu = 6" href="#policy-6">6. Law Enforcement</a></li>
-          <li :class="selectedMenu === 7 ? 'policy-selected' : ''"><a @click="selectedMenu = 7" href="#policy-7">7. Link to Other Third Parties</a></li>
-          <li :class="selectedMenu === 8 ? 'policy-selected' : ''"><a @click="selectedMenu = 8" href="#policy-8">8. Contact Details</a></li>
+          <li :class="selectedMenu === 1 ? 'policy-selected' : ''"><a @click="select(1)" >1. Reasons We Collect Your Data</a></li>
+          <li :class="selectedMenu === 2 ? 'policy-selected' : ''"><a @click="select(2)" >2. Types of Data We Collect</a></li>
+          <li :class="selectedMenu === 3 ? 'policy-selected' : ''"><a @click="select(3)" >3. Collection of Your Data</a></li>
+          <li :class="selectedMenu === 4 ? 'policy-selected' : ''"><a @click="select(4)" >4. Management of Your Data</a></li>
+          <li :class="selectedMenu === 5 ? 'policy-selected' : ''"><a @click="select(5)" >5. Security of Your Data</a></li>
+          <li :class="selectedMenu === 6 ? 'policy-selected' : ''"><a @click="select(6)" >6. Law Enforcement</a></li>
+          <li :class="selectedMenu === 7 ? 'policy-selected' : ''"><a @click="select(7)" >7. Link to Other Third Parties</a></li>
+          <li :class="selectedMenu === 8 ? 'policy-selected' : ''"><a @click="select(8)" >8. Contact Details</a></li>
         </ul>
       </div>
       <div class="policy-content">
@@ -105,6 +105,12 @@ export default {
   data () {
     return {
       selectedMenu: 1
+    }
+  },
+  methods: {
+    select (val) {
+      this.selectedMenu = 1
+      document.getElementById('policy-' + val).scrollIntoView();
     }
   }
 }
