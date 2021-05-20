@@ -10,7 +10,7 @@
             extension?</a>
           <div>
             <label>Participating KSM Address <span style="color: #e53e3e">*</span></label>
-              <a class="link-btn" style="border-radius: 4px;width: 100%" v-if="!currentWallet || isWalletLoading" @click="requestExtension">{{ isWalletLoading ? 'Loading...' : 'Connect Polkadot.js Extension' }}</a>
+              <button class="link-btn" style="border-radius: 4px;width: 100%" v-if="!currentWallet || isWalletLoading" @click="requestExtension">{{ isWalletLoading ? 'Loading...' : 'Connect Polkadot.js Extension' }}</button>
               <select-address v-else :accounts="selectOptions" v-model="selectedAccount"/>
           </div>
           <div>
@@ -19,7 +19,7 @@
               <input placeholder="Only ERC20 Address" type="text" v-model="erc20Address" :readonly="isLinked"/>
               <button class="link-btn" style="border-top-left-radius: 0; border-bottom-left-radius: 0" :disabled="isSigning || !erc20Address || !validAddress || isLinked"
                       @click="linkAddress">
-                {{ isSigning ? 'loading...' : (isLinked ? 'Linked' : 'Link address') }}
+                {{ isSigning ? 'Loading...' : (isLinked ? 'Linked' : 'Link address') }}
               </button>
             </div>
             <span v-show="erc20Address && !isLinked" v-if="!validAddress" style="color: #a51c1c; font-size: 11px">Invalid Address !</span>
@@ -41,7 +41,7 @@
             </div>
           </div>
           <button class="link-btn" style="width: 100%; background: linear-gradient(273.09deg, #D62860 0.01%, #FF919D 48.66%, #00E0FF 100%);" :disabled="!isLinked || !amount || !selectedAccount || isSubmitting || !policyConfirmed" @click.prevent="submit" title="Complete link address and fill amount first">
-            {{ isSubmitting ? 'Transfering' : 'Sign transfer' }}
+            {{!isLinked && !isSigning ? 'Link ERC20 wallet before transfer' : isSubmitting ? 'Transfering' : 'Sign transfer' }}
           </button>
         </div>
         <div v-show="message" variant="info">
