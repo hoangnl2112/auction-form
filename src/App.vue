@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <nav class="header">
-      <img class="header-logo" src="./assets/logo.png"/>
+      <a href="/">
+        <img  class="header-logo" src="./assets/logo.png"/>
+      </a>
 <!--      <ul class="header-list">-->
 <!--        <li>Developer Hub</li>-->
 <!--        <li>Documention</li>-->

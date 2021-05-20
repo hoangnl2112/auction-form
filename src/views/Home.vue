@@ -7,7 +7,7 @@
       <p class="hero-subtitle">
         PolkaSmith is the one-stop production hub for DeFi and NFT dApps on Kusama. It aims to provide all the necessary features, services, integrations, and tools for all DeFi and NFT experiments, innovations, and real-world solutions. PolkaSmith is no newcomer but a canary network of PolkaFoundry on Kusama. Learn more about PolkaFoundry here.
       </p>
-      <a class="hero-btn" @click="scrollNext">Learn more</a>
+      <a class="hero-btn" href="https://polkafoundry.com/" target="_blank" rel="noopener noreferrer">Learn more</a>
     </div>
     <div class="explanation" id="explanation">
       <h2 class="title">About Kusama Parachain Slot Auction</h2>
@@ -155,8 +155,8 @@
       <div class="subscribe-info" style="margin-top: 0">
 <!--        <p>Community</p>-->
         <div class="row-flex">
-          <a href="https://twitter.com/PolkaFoundry" target="_blank"><img alt src="../assets/telegram.svg"/></a>
-          <a href="https://t.me/PolkaFoundryANN" target="_blank"><img alt src="../assets/twitter.svg"/></a>
+          <a href="https://t.me/PolkaFoundryANN" target="_blank"><img alt src="../assets/telegram.svg"/></a>
+          <a href="https://twitter.com/PolkaFoundry" target="_blank"><img alt src="../assets/twitter.svg"/></a>
           <a href="https://medium.com/polkafoundry/tagged/polkafoundry" target="_blank"><img alt src="../assets/medium.svg"/></a>
         </div>
       </div>
