@@ -71,28 +71,39 @@
       <div class="mask-dot right"></div>
     </div>
     <div class="crowdloan">
-      <h2 class="title">PolkaSmith Crowd Loan Reward</h2>
-      <div class="row-flex align-items-center">
+      <h2 class="title">PolkaSmith Auction Plan</h2>
+      <div class="row-flex">
         <div class="item">
-          <img alt src="../assets/reward1.svg"/>
-          <div class="title">$PKF Reward</div>
-          <p>Every KSM that supports PolkaSmith in the Kusama Parachain Slot auction through the Crowdloan will be
-            entitled to a decent number of $PKF as rewards (TBA). Note that if PolkaSmith wins Kusama Slot, the value
-            for $PKF may scale significantly.</p>
+          <div class="title">1st - 8th Parachain Slot</div>
+          <p>PolkaSmith will participate in 1st-8th slot auctions to win. In other words, we aim to lease a parachain slot for 48 weeks (each lease period is 6 weeks). Understanding that competition for parachain slots is intense, if PolkaSmith doesn’t win the first auction, we will keep bidding until a slot is won and only give up after some rounds (TBA).
+          </p>
         </div>
         <div class="item">
-          <img alt src="../assets/reward2.svg"/>
-          <div class="title">Referrals</div>
-          <p>If a crowdloan participant invites an additional participant who makes a contribution, they will each
-            receive an additional reward (TBA). E.g. you invite your friend, so additional reward, let say equivalent to
-            10% your friend incentives split for both you and your friend.</p>
+          <div class="title">100 PKS/ 1 KSM Winning Rewards</div>
+          <p>If PolkaSmith wins, every KSM that supports PolkaSmith in the Kusama Parachain Slot auction through the crowdloan will be entitled to 100 $PKS as rewards. PKS is the native token of PolkaSmith, which can be claimed from PKF at a 1:1 ratio. Note that if PolkaSmith wins Kusama Slot, the value for PKF may scale significantly.
+          </p>
         </div>
         <div class="item">
-          <img alt src="../assets/reward3.svg"/>
-          <div class="title">Other perks</div>
-          <p>PolkaSmith supporters will get up to <br/> 25 ePKF/ 1 KSM and gain high tier tickets for IDOs in the Red
-            Kite launchpad (a sister network of PolkaSmith). In the case PolkaSmith fails to lease a parachain slot,
-            this perk is still guaranteed. (ePKF = Equivalent PKF).</p>
+          <div class="title">50 ePKF/ 1 KSM Whether Win or Lose</div>
+          <p>ePKF is the “equivalent PKF” token on our launchpad, Red Kite, which means even if you don't stake any PKF on Red Kite, you can get the same tier benefits when owning a corresponding amount of ePKF. E.g Owning 500 ePKFs gives you all the Dove tier benefits (including joining IDOs) without staking 500 PKFs. Note: This reward only applies to to crowdloan on Red Kite.
+          </p>
+        </div>
+      </div>
+      <div class="row-flex" style="margin-top: 12px">
+        <div class="item">
+          <div class="title">0.5% Referrals Rewards</div>
+          <p>This is also an exclusive reward for crowdloan on Red Kite. Community members of PolkaFoundry/PolkaSmith can earn directly some PKF by referring friends to join the project’s crowdloan on Red Kite. Each of the referrer and the referred person will receive the amount of PKF equivalent to 0.5% of the referred person’s auction incentives.
+          </p>
+        </div>
+        <div class="item">
+          <div class="title">17,000,000 PKS Prize Pool</div>
+          <p>The PolkaSmith’s prize tool for Kusama Parachain Slot Auction is worth 7,000,000 PKS, equivalent to 7,000,000 PKF, 3.5% of PKF total supply (200,000,000 PKF). That means when the KSM in the PolkaSmith crowdloan reaches 70,000, there are no more PKS that can be distributed to contributors and we will stop receiving contributions.
+          </p>
+        </div>
+        <div class="item">
+          <div class="title">Instant Rewards Distribution</div>
+          <p>As soon as contributors join PolkaSmith crowdloan, 100% ePKF rewards will be delivered immediately. After PolkaSmith wins a parachain slot, 35% of the PKS tokens in the reward pool will go to the contributors' wallet addresses. The remaining 65% of PKS tokens will be vested monthly over 11 months.
+          </p>
         </div>
       </div>
     </div>
@@ -103,8 +114,8 @@
         <div class="title">STEP 1- Register and Subscribe</div>
         <p>After your registration, we will inform you of PolkaSmith's latest auction plan through email. You may also
           want to subscribe to our
-          <a href="#" target="_blank">Twitter</a>, <a href="#" target="_blank">Telegram</a>
-          and <a href="#" target="_blank">Medium</a> for PolkaSmith and PolkaFoundry for updates.
+          <a href="https://twitter.com/PolkaFoundry" target="_blank">Twitter</a>, <a href="https://t.me/PolkaFoundryANN" target="_blank">Telegram</a>
+          and <a href="https://medium.com/polkafoundry/tagged/polkafoundry" target="_blank">Medium</a> for PolkaSmith and PolkaFoundry for updates.
         </p>
       </div>
       <div class="section-item">
@@ -158,9 +169,9 @@
       <div class="subscribe-info">
         <p>Comunity</p>
         <div class="row-flex">
-          <a href="#" target="_blank"><img alt src="../assets/telegram.svg"/></a>
-          <a href="#" target="_blank"><img alt src="../assets/twitter.svg"/></a>
-          <a href="#" target="_blank"><img alt src="../assets/linkedin.svg"/></a>
+          <a href="https://twitter.com/PolkaFoundry" target="_blank"><img alt src="../assets/telegram.svg"/></a>
+          <a href="https://t.me/PolkaFoundryANN" target="_blank"><img alt src="../assets/twitter.svg"/></a>
+          <a href="https://medium.com/polkafoundry/tagged/polkafoundry" target="_blank"><img alt src="../assets/medium.svg"/></a>
         </div>
       </div>
     </div>
@@ -186,37 +197,40 @@ export default {
       referCode: '',
       qas: [
         {
-          q: 'When is the PolkaSmith (PolkaFoundry on Kusama) Crowdloan?',
-          a: 'This is technically dependent on the Polkadot/Kusama parachain auction readiness. Subscribe to our Twitter, Telegram and Medium for PolkaSmith for updates.'
+          q: 'What is the difference between PolkaSmith and PolkaFoundry?',
+          a: 'PolkaFoundry is implemented on the Polkadot to serve enterprises and B2B applications that require high stability and dependability. Meanwhile, PolkaSmith, which is a canary network of PolkaFoundry implemented on Kusama, is more suitable for early-stage startups that need to grow quickly and easily experiment with bold new ideas.',
         },
         {
-          q: 'What does it mean to unbond my KSM, and how do I do it?',
-          a: 'When nominating on Kusama, you have a delayed exit period, called the unbonding period, which serves as a cooldown. You will not be able to transfer your tokens before this period has elapsed. Read more and find instructions on the Kusama wiki.'
+          q: 'Has PolkaSmith launched?',
+          a: 'Not yet. Even though we have our testnet and all the technical aspects ready, we will have to wait for a parachain slot to bring into practice. We will launch PolkaSmith once we win a parachain slot on Kusama Network.'
         },
         {
-          q: 'Do I have to unbond my KSM if they are on an exchange?',
-          a: 'Not necessarily. You need to contact your exchange to find out how to participate directly on the exchange. In case it is not supported on your exchange, you would need to unbound, transfer your KSM to polkadot-js extension wallet and use one of the aforementioned methods to participate.'
+          q: 'Why does PolkaSmith compete for the Kusama Parachain slot?',
+          a: 'For PolkaFoundry and PolkaSmith, winning a parachain slot on Kusama is very important to ensure all the products developing on PolkaFoundry can run smoothly before the official deployment on Polkadot.'
         },
         {
-          q: 'My friend filled out my referral code. Will we both get $PKF?',
-          a: 'Yes.'
+          q: 'What is the timeline for PolkaSmith crowdloan?',
+          a: 'PolkaSmith crowdloan on Kusama will begin once the auction is open on Kusama. This is not the date we can decide. However, our crowdloan on Red Kite and 3rd-party platforms will be announced and implemented soon, even before the auction. Please stay tuned on our <a href="https://twitter.com/PolkaFoundry" target="_blank">Twitter</a>, <a href="https://t.me/PolkaFoundryANN" target="_blank">Telegram</a> and <a href="https://medium.com/polkafoundry/tagged/polkafoundry" target="_blank">Medium</a>.'
         },
         {
-          q: 'Can the pledged KSM be withdrawn at any time?',
-          a: 'The KSM pledged by ordinary users will be locked. After the slot auction is over, KSM will return the original way to the user.',
-          note: 'If PolkaSmith wins the slot auction, the KSM of each node will continue to lock up positions.'
+          q: 'Can I use ethereum or bsc addresses to participate in the PolkaSmith crowdloan?',
+          a: 'No. To join any crowdloan for Kusama Parachain auctions, contributors must select the Kusama address.'
         },
         {
-          q: 'Will my KSM be returned after the parachain lease ends?',
-          a: 'Yes, your KSM will be automatically returned to you when the parachain lease ends.'
+          q: 'Will I get ePKF and referral rewards if I join PolkaSmith crowdloan on Kusama or 3rd-party exchange platforms?',
+          a: 'Unfortunately, the answer is no. ePKF and referral rewards are both exclusive rewards given to contributors who join crowdloan on our launchpad, Red Kite. The reason for this privilege is the KSM locking period. Crowdloan on Red Kite will start sooner and we will ask contributors to keep their KSM locked even if we doesn’t win the first auction since we we will keep bidding the next rounds. Meanwhile, Kusama and 3rd-party platforms will automatically unlock your KSM everytime the project fails an auction. Therefore, if you are committed to PolkaSmith crowdloan and interested in ePKF along with referral rewards, we recommend you join crowdloan on Red Kite.'
         },
         {
-          q: 'What if PolkaSmith doesn’t win the parachain auction - what happens to my KSM?',
-          a: 'If PolkaSmith does not win the initial auction, it will continue to bid in the subsequent auctions. If PolkaSmith fails to win any auction, then it will end the crowdloan and return all funds to holders.'
+          q: 'If PolkaSmith wins, how long will my KSM be locked?',
+          a: 'No matter on what participation channels you join our crowdloan, in the event that PolkaSmith wins a parachain slot, your KSM will be locked throughout the PolkaSmith slot range. Our slot range is 48 weeks starting from the day PolkaSmith wins.'
         },
         {
-          q: 'Where to trade my $PKF reward?',
-          a: 'In Uniswap or Gate.io.'
+          q: 'If PolkaSmith loses, will my KSM be locked?',
+          a: 'If you join PolkaSmith crowdloan on Kusama or 3rd-party platforms, your KSM will be unlocked immediately after PolkaSmith loses an auction. This is the regulation from Kusama and these 3rd-platforms. On the other hand, PolkaSmith supporters on Red Kite will still have their KSM in lock up positions so that PolkaSmith can continue bidding in the subsequent rounds. In exchange, PolkaSmith rewards supporters on Red Kite special treatment including ePKF and referral rewards. In a worst-case scenario, PolkaSmith have to stop crowdloan after failing some aunctións (the specific number will be decided later), we will return KSM for all contributors. Note: supporters on Red Kite still get to keep their ePKF.'
+        },
+        {
+          q: 'How to swap my PKS reward to PKF?',
+          a: 'We will provide a bridge to swap PKS to PKF at a 1:1 ratio. Then, you can trade PKF on Uniswap or Gate.io. We will announce this in detail later. Please stay tuned on our <a href="https://twitter.com/PolkaFoundry" target="_blank">Twitter</a>, <a href="https://t.me/PolkaFoundryANN" target="_blank">Telegram</a> and <a href="https://medium.com/polkafoundry/tagged/polkafoundry" target="_blank">Medium</a>.'
         }
       ],
       subscribe: ''

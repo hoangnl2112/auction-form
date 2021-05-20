@@ -4,27 +4,15 @@
       {{q}}
       <img alt :class="open && 'rotate'" src="../assets/arrow_down.svg"/>
     </div>
-    <transition name="accordion" v-if="note"
+    <transition name="accordion"
                 @before-enter="beforeEnter"
                 @enter="enter"
                 @enter-cancelled="enterCancelled"
                 @leave="leave"
                 @after-leave="afterLeave"
                 @leave-cancelled="leaveCancelled">
-      <div v-show="open" class="a">
-        {{a}} <br/> <span class="note">Note: {{ note }}</span>
-      </div>
-    </transition>
-    <transition name="accordion" v-else
-                @before-enter="beforeEnter"
-                @enter="enter"
-                @enter-cancelled="enterCancelled"
-                @leave="leave"
-                @after-leave="afterLeave"
-                @leave-cancelled="leaveCancelled">
-      <div v-show="open" class="a">
-        {{a}}
-      </div>
+      <pre v-show="open" class="a" v-html="a">
+      </pre>
     </transition>
   </div>
 </template>
@@ -140,6 +128,8 @@ export default {
     line-height: 24px;
     color: #D9DAF2;
     transition: all 0.15s;
+    white-space: normal;
+    font-family: 'Nunito', sans-serif;
   }
 
   .note {
