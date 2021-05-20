@@ -542,6 +542,10 @@ a {
     line-height: 44px;
 }
 
+.faq .title:before {
+    content: 'Frequently Asked Questions';
+}
+
 .subscribe {
     margin-top: 100px;
     display: flex;

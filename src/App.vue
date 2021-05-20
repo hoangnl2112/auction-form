@@ -56,4 +56,5 @@ export default {
 }
 
 @import "style/style.css";
+@import "style/mobile.css";
 </style>

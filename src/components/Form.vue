@@ -135,6 +135,12 @@ export default {
           text: 'Please enter KSM address'});
       }
 
+      if (!this.verified) {
+        if (!this.verified) {
+          return this.$refs.captcha.execute();
+        }
+      }
+      
       if (!this.isAgree) {
         return this.$notify({
           type: 'error',
