@@ -41,7 +41,7 @@
         </div>
         <div class="divider"></div>
         <div class="notice">
-          Get to know more about Kusama Parchain Slot Auction
+          Get to know more about Kusama Parachain Slot Auction
           <a href="#" target="_blank">Click here</a>
         </div>
       </div>

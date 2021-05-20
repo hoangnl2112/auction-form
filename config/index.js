@@ -1,3 +1,3 @@
 export default {
-    api_url: 'https://crowdloan.polkafoundry.com',
+    api_url: 'https://polkasmith.polkafoundry.com/',
 };
