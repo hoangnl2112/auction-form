@@ -3,32 +3,31 @@
     <a href="https://polkadot.js.org/extension/" target="_blank" rel="noopener noreferrer">Get Polkadot.js extension?</a>
     <div>
       <label>Participating KSM Address <span style="color: #e53e3e">*</span></label>
-      <input v-if="manual" placeholder="Enter your address" v-model="ksm_address" :required="manual"/>
+      <input autocomplete="false" v-if="manual" placeholder="Enter your address" v-model="ksm_address" :required="manual"/>
       <template v-else>
         <button v-if="accounts.length === 0" @click.prevent="requestExtension">Connect Polkadot.js Extension</button>
         <select-address v-else :accounts="accounts" v-model="account"/>
       </template>
       <div class="row-flex">
-        <a href="https://wiki.acala.network/karura/ksm-address/check-ksm-addr" target="_blank" rel="noopener noreferrer">Get KSM Address manually</a>
+        <a @click="manual = !manual">Get KSM Address manually</a>
         <switch-btn style="margin: 0" v-model="manual"/>
       </div>
     </div>
     <div>
       <label>Email <span style="color: #e53e3e">*</span></label>
-      <input placeholder="Enter your email" type="email" v-model="email" required/>
+      <input autocomplete="false" placeholder="Enter your email" type="email" v-model="email" required/>
     </div>
     <div>
       <label>Reference code (Optional)</label>
-      <input placeholder="Enter your reference code" v-model="referrer_code"/>
+      <input autocomplete="false" placeholder="Enter your reference code" v-model="referrer_code"/>
     </div>
     <div class="rule">
       <input v-model="isAgree" type="checkbox"/>
-      <div>I have read and accept the
-        <a class="css-7rgjox" target="_blank" rel="noopener noreferrer" href="/privacy">Privacy Policy.</a>
+      <div>I have read and accept the <a>Privacy Policy</a>
         and I agree to receive email communications about PolkaSmith and PolkaFoundry, including exclusive launch updates and liquidity provider program.
       </div>
     </div>
-    <button type="submit" class="btn">Notify me</button>
+    <button type="submit" class="btn">Register</button>
     <vue-hcaptcha
         sitekey="e8140feb-2d1f-4393-b4d8-5c83c982b919"
         @verify="onVerify"
@@ -44,6 +43,7 @@
 
 <script>
 import { checkEmail } from '@/libs/validate';
+import { encodeAddress, decodeAddress } from '@polkadot/util-crypto'
 import { web3Accounts, web3Enable } from "@polkadot/extension-dapp";
 import SwitchBtn from "@/components/SwitchBtn";
 import SelectAddress from "@/components/SelectAddress";
@@ -74,6 +74,14 @@ export default {
 
   async created () {
     await this.GenerateCodeYourCode();
+  },
+
+  watch: {
+    account(val) {
+      if(val && val.ksm_address) {
+        this.ksm_address = val.ksm_address
+      }
+    }
   },
 
   methods: {
@@ -189,9 +197,12 @@ export default {
           this.showError("KSM wallet list is empty. Please create or import your wallet!")
           return
         }
-        this.accounts = accounts;
-        this.account = accounts[0];
-        this.ksm_address = accounts[0].address;
+        this.accounts = accounts.map(acc => ({
+          ksm_address: encodeAddress(decodeAddress(acc.address), 2),
+          ...acc
+        }));
+        this.account = this.accounts[0];
+        this.ksm_address = this.accounts[0].ksm_address;
       } catch(e) {
         this.showError("You have denied access to Polkadot.js Extension. Please accept access to Polkadot.js Extension at \"Manage Website Access\" then reload this page.",)
       }
