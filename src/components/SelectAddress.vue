@@ -1,20 +1,33 @@
 <template>
   <div class="dropdown">
-    <input class="dropdown-input" @click="toggleShow" v-model="computedValue"/>
+    <div class="dropdown-value" @click="toggleShow">
+      <Identicon class="icon" :size="28" theme="polkadot" :value="value.address"/>
+      <div class="wrapper">
+        <div class="name">{{ value.meta.name }}</div>
+        <div class="address">{{ value.ksm_address }}</div>
+      </div>
+    </div>
     <div class="dropdown-content" v-show="optionsShown">
       <div class="dropdown-item"
           @mousedown="selectOption(account)"
           v-for="(account, index) in accounts"
           :key="index">
-        {{ account.meta.name }} ({{corruptAddress(account.ksm_address)}})
+        <Identicon class="icon" :size="28" theme="polkadot" :value="account.address"/>
+        <div class="wrapper">
+          <div class="name">{{ account.meta.name }}</div>
+          <div class="address">{{corruptAddress(account.ksm_address)}}</div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Identicon from '@vue-polkadot/vue-identicon';
+
 export default {
   name: "SelectAddress",
+  components: { Identicon },
   props: {
     accounts: {
       type: Array,
@@ -58,28 +71,33 @@ export default {
   display: block;
   margin: auto;
 }
-.dropdown .dropdown-input {
-  background: #fff;
+.dropdown .dropdown-value {
+  background: linear-gradient(273.46deg, #D52D6F 0%, #D62B69 0.01%, #F98395 48.66%, #0DCCFF 100%);
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 4px;
   cursor: pointer;
-  border: 1px solid #e7ecf5;
-  border-radius: 3px;
-  color: #333;
-  display: block;
-  font-size: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  min-width: 250px;
-  width: 100%;
 }
-.dropdown .dropdown-input:hover {
-  background: #f8f8fa;
+.icon {
+  display: flex;
+  align-items: center;
 }
-.dropdown .dropdown-input:focus {
-  border: 3px solid #14C4FF;
-  box-shadow: 0px 0px 20px rgba(22, 193, 255, 0.6);
+.wrapper {
+  margin-left: 8px;
+}
+.name {
+  font-size: 14px;
+  line-height: 18px;
+}
+.address {
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 12px;
 }
 .dropdown .dropdown-content {
   position: absolute;
+  transform: translateY(4px);
   background-color: #fff;
   padding: .5rem 0;
   min-width: 248px;
@@ -103,6 +121,8 @@ export default {
   white-space: nowrap;
   background-color: transparent;
   border: 0;
+  display: flex;
+  align-items: center;
 }
 .dropdown .dropdown-content .dropdown-item:hover {
   background-color: #e7ecf5;
