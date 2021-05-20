@@ -2,8 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import Home from "@/views/Home";
-import Transfer from "@/views/Transfer";
 import Notifications from 'vue-notification'
+import PrivacyPolicy from "@/views/PrivacyPolicy";
 
 Vue.use(Notifications)
 Vue.config.productionTip = false
@@ -18,9 +18,9 @@ const router = new VueRouter({
       component: Home
     },
     {
-      path: '/transfer',
-      name: 'Transfer',
-      component: Transfer
+      path: '/privacy',
+      name: 'Policy',
+      component: PrivacyPolicy
     }
   ]
 })
