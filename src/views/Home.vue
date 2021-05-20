@@ -29,7 +29,7 @@
         </div>
         <div class="divider"></div>
         <div class="notice">
-          Get to know more about Kusama Parchain Slot Auction
+          Get to know more about Kusama Parachain Slot Auction
           <a href="https://kusama.network/auctions" target="_blank" rel="noopener noreferrer">here.</a>
         </div>
       </div>
@@ -179,7 +179,7 @@ export default {
   },
   data() {
     return {
-      registered: '11,240',
+      registered: 0,
       accounts: [],
       account: null,
       address: '',
@@ -224,12 +224,20 @@ export default {
           a: 'We will provide a bridge to swap PKS to PKF at a 1:1 ratio. Then, you can trade PKF on Uniswap or Gate.io. We will announce this in detail later. Please stay tuned on our <a href="https://twitter.com/PolkaFoundry" target="_blank">Twitter</a>, <a href="https://t.me/PolkaFoundryANN" target="_blank">Telegram</a> and <a href="https://medium.com/polkafoundry/tagged/polkafoundry" target="_blank">Medium</a>.'
         }
       ],
-      subscribe: ''
+      subscribe: '',
+      interval: null
     }
   },
   async created() {
     const res = await Count();
     this.registered = res.total;
+    this.interval = setInterval(async () => {
+      const res = await Count();
+      this.registered = res.total;
+    }, 30 * 1000)
+  },
+  beforeDestroy() {
+    clearInterval(this.interval)
   },
   methods: {
     showError(error) {

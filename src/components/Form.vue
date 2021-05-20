@@ -30,7 +30,7 @@
     </div>
     <div class="rule">
       <input v-model="isAgree" type="checkbox"/>
-      <div>I have read and accept the <a href="/privacy">Privacy Policy</a>
+      <div>I have read and accept the <a href="#/privacy">Privacy Policy</a>
         and I agree to receive email communications about PolkaSmith and PolkaFoundry, including exclusive launch updates and liquidity provider program.
       </div>
     </div>
