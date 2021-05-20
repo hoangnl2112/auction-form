@@ -116,20 +116,20 @@
     <div class="participation">
       <h2 class="title">Participation channels</h2>
       <div class="channels">
-        <div class="channel">
+        <a class="channel" href="https://redkite.polkafoundry.com/" target="_blank">
           <img alt src="../assets/redkite.png"/>
           <div>
             <p>Redkite</p>
             <p>Upcoming</p>
           </div>
-        </div>
-        <div class="channel">
+        </a>
+        <a class="channel" href="https://kusama.network" target="_blank">
           <img alt src="../assets/kusama.png"/>
           <div>
             <p>Kusama</p>
             <p>Upcoming</p>
           </div>
-        </div>
+        </a>
         <div class="channel">
           <img alt src="../assets/exchange.png"/>
           <div>
