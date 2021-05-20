@@ -9,7 +9,7 @@
         necessary features, services, integrations, and tools for all DeFi and NFT experiments, innovations, and
         real-world solutions. PolkaSmith is no newcomer, but actually a canary network of PolkaFoundry on Kusama.
       </p>
-      <a class="hero-btn" href="#" target="_blank" rel="noopener noreferrer">Learn more</a>
+      <a class="hero-btn" href="https://polkafoundry.com/" target="_blank" rel="noopener noreferrer">Learn more</a>
     </div>
     <div class="explanation">
       <h2 class="title">About Kusama Parachain Slot Auction</h2>
@@ -42,7 +42,7 @@
         <div class="divider"></div>
         <div class="notice">
           Get to know more about Kusama Parachain Slot Auction
-          <a href="#" target="_blank">Click here</a>
+          <a href="https://kusama.network/auctions" target="_blank" rel="noopener noreferrer">Click here</a>
         </div>
       </div>
     </div>
@@ -96,7 +96,7 @@
           </p>
         </div>
         <div class="item">
-          <div class="title">17,000,000 PKS Prize Pool</div>
+          <div class="title">7,000,000 PKS Prize Pool</div>
           <p>The PolkaSmith’s prize tool for Kusama Parachain Slot Auction is worth 7,000,000 PKS, equivalent to 7,000,000 PKF, 3.5% of PKF total supply (200,000,000 PKF). That means when the KSM in the PolkaSmith crowdloan reaches 70,000, there are no more PKS that can be distributed to contributors and we will stop receiving contributions.
           </p>
         </div>

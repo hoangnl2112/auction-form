@@ -6,7 +6,7 @@
           @mousedown="selectOption(account)"
           v-for="(account, index) in accounts"
           :key="index">
-        {{ account.meta.name }} ({{corruptAddress(account.address)}})
+        {{ account.meta.name }} ({{corruptAddress(account.ksm_address)}})
       </div>
     </div>
   </div>
@@ -28,7 +28,7 @@ export default {
   },
   computed: {
     computedValue() {
-      return this.value?.meta.name + ' (' + this.corruptAddress(this.value?.address) + ')'
+      return this.value?.meta.name + ' (' + this.corruptAddress(this.value?.ksm_address) + ')'
     }
   },
   methods: {

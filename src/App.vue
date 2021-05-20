@@ -2,13 +2,13 @@
   <div id="app">
     <nav class="header">
       <img class="header-logo" src="./assets/logo.png"/>
-      <ul class="header-list">
-        <li>Developer Hub</li>
-        <li>Documention</li>
-        <li>One Pagers</li>
-        <li>Token metric</li>
-      </ul>
-      <a class="header-btn" href="#">Let's chat now</a>
+<!--      <ul class="header-list">-->
+<!--        <li>Developer Hub</li>-->
+<!--        <li>Documention</li>-->
+<!--        <li>One Pagers</li>-->
+<!--        <li>Token metric</li>-->
+<!--      </ul>-->
+      <a class="header-btn" href="https://t.me/PolkaFoundryANN" target="_blank">Let's chat now</a>
     </nav>
     <router-view></router-view>
     <footer>© Polkasmith 2021</footer>
