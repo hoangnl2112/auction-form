@@ -109,7 +109,7 @@ export default {
   },
   methods: {
     select (val) {
-      this.selectedMenu = 1
+      this.selectedMenu = val
       document.getElementById('policy-' + val).scrollIntoView();
     }
   }
