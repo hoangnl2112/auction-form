@@ -14,10 +14,6 @@
       </div>
     </div>
     <div>
-      <label>ERC20 address <span style="color: #e53e3e">*</span></label>
-      <input placeholder="Enter your ERC20 wallet to get rewarded" type="text" v-model="erc20_address" required/>
-    </div>
-    <div>
       <label>Email <span style="color: #e53e3e">*</span></label>
       <input placeholder="Enter your email" type="email" v-model="email" required/>
     </div>
@@ -33,6 +29,7 @@
       </div>
     </div>
     <button type="submit" class="btn">Notify me</button>
+    <vue-hcaptcha ref="captcha" sitekey="e8140feb-2d1f-4393-b4d8-5c83c982b919" size="invisible" @verify="captchaVerify" @expired="captchaExpired" @reset="captchaReset"></vue-hcaptcha>
   </form>
 </template>
 
@@ -43,10 +40,12 @@ import SwitchBtn from "@/components/SwitchBtn";
 import SelectAddress from "@/components/SelectAddress";
 import { Add } from '@/services/auctions';
 import { GenerateCode } from '@/services/referal-code​';
+import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
+// import config from '../../config';
 
 export default {
   name: "Form",
-  components: { SelectAddress, SwitchBtn },
+  components: { SelectAddress, SwitchBtn, VueHcaptcha },
   data() {
     return {
       your_referrer_code: '',
@@ -54,10 +53,10 @@ export default {
       account: null,
       manual: false,
       ksm_address: '',
-      erc20_address: '',
       email: '',
       referrer_code: '',
       isAgree: false,
+      captcha_code: '',
     }
   },
 
@@ -89,23 +88,22 @@ export default {
         return alert('Please enter KSM address');
       }
 
-      if (!this.erc20_address) {
-        return alert('Please enter ERC20 address');
+      if (!this.captcha_code) {
+        return this.$refs.captcha.execute();
       }
 
       try {
         const res = await Add({
           ksm_address: this.ksm_address,
-          erc20_address: this.erc20_address,
           email: this.email,
           referrer_code: this.referrer_code,
           your_referrer_code: this.your_referrer_code,
+          captcha_code: this.captcha_code,
         });
 
         if (res) {
           // reset form
           this.ksm_address = '';
-          this.erc20_address = '';
           this.email = '';
           this.referrer_code = '';
           this.your_referrer_code = '';
@@ -113,7 +111,9 @@ export default {
         }
         alert('Done');
       } catch (e) {
-        alert(e.message);
+        alert(e.response.data.message);
+      } finally {
+        this.$refs.captcha.reset();
       }
     },
 
@@ -136,6 +136,19 @@ export default {
         console.error(e)
         this.showError("You have denied access to Polkadot.js Extension. Please accept access to Polkadot.js Extension at \"Manage Website Access\" then reload this page.",)
       }
+    },
+
+    async captchaVerify(token) {
+      this.captcha_code = token;
+      await this.submit();
+    },
+
+    captchaExpired() {
+      this.captcha_code = '';
+    },
+
+    captchaReset() {
+      this.captcha_code = '';
     }
   }
 }
