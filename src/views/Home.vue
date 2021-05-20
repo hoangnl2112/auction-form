@@ -140,17 +140,10 @@
             <p>TBA</p>
           </div>
         </div>
-        <div class="channel">
-          <img alt src="../assets/redkite.png"/>
-          <div>
-            <p>Redkite</p>
-            <p>Upcoming</p>
-          </div>
-        </div>
       </div>
     </div>
     <div class="faq">
-      <div class="title">Frequently Asked Questions</div>
+      <div class="title"></div>
       <qa-item v-for="(qa, i) in qas" :key="i" :q="qa.q" :a="qa.a" :note="qa.note"/>
       <div class="mask-dot left"></div>
       <div class="mask-dot right"></div>

@@ -1,0 +1,151 @@
+@media screen and (max-width: 600px) {
+    body {
+        --padding-horizon: 36px;
+        --padding-horizon-s: 20px;
+    }
+
+    nav.header .header-logo {
+        max-width: 120px;
+    }
+
+    nav.header .header-list {
+        display: none;
+    }
+
+    nav.header .header-btn {
+        display: none;
+    }
+
+    .hero-title {
+        font-size: 36px;
+        line-height: 44px;
+    }
+
+    .hero-subtitle {
+        margin-top: 12px;
+        margin-bottom: 20px;
+    }
+
+    .explanation .title,
+    .counter .title,
+    .crowdloan .title,
+    .section .title,
+    .participation .title,
+    .faq .title {
+        font-size: 24px;
+        line-height: 36px;
+        margin-bottom: 24px;
+    }
+
+    .explanation .content {
+        flex-direction: column;
+        background: transparent;
+    }
+
+    .explanation .item {
+        margin-bottom: 16px;
+        padding: 24px;
+        border-radius: 8px !important;
+        background: linear-gradient(180deg, #19D9F6 0%, #050940 60.12%, #050940 100%) !important;
+    }
+
+    .explanation .item .title,
+    .explanation .item .detail {
+        text-align: center;
+        margin-bottom: 12px;
+    }
+
+    .explanation .divider {
+        display: none;
+    }
+
+    .explanation .notice {
+        position: static;
+        white-space: unset;
+        transform: none;
+        display: inline;
+        text-align: center;
+    }
+
+    .explanation + .row-flex {
+        flex-direction: column;
+    }
+
+    .counter {
+        margin: 0;
+        padding-right: var(--padding-horizon);
+        text-align: center;
+    }
+
+    .counter .open {
+        margin: 0 auto;
+    }
+
+    .form {
+        margin: 32px var(--padding-horizon);
+        padding: 0;
+    }
+
+    .crowdloan > .row-flex {
+        flex-direction: column;
+        background: transparent;
+    }
+
+    .crowdloan .item {
+        background: linear-gradient(180deg, #18C9E880 0%, #05094080 60.12%, #05094080 100%);
+        border-radius: 8px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+    .crowdloan .item .title,
+    .crowdloan .item p {
+        text-align: center;
+    }
+
+    .crowdloan .item .title {
+        margin: 12px 0;
+    }
+
+    .crowdloan .item p {
+        margin: 0;
+    }
+
+    .section {
+        padding: 0 var(--padding-horizon);
+    }
+
+    .section .title {
+        text-align: center;
+    }
+
+    .section img {
+        display: none;
+    }
+
+    .section-item {
+        padding: 24px 0 12px;
+    }
+
+    .section-item .title {
+        padding: 0;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 8px;
+    }
+
+    .channels {
+        flex-direction: column;
+    }
+
+    .faq {
+        padding: var(--padding-horizon-s);
+    }
+
+    .faq .title:before {
+        content: 'FAQs';
+    }
+}
