@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import Home from "@/views/Home";
-import Transfer from "@/views/Transfer";
+// import Transfer from "@/views/Transfer";
 import Notifications from 'vue-notification'
 
 Vue.use(Notifications)
@@ -17,11 +17,11 @@ const router = new VueRouter({
       name: 'Home',
       component: Home
     },
-    {
-      path: '/transfer',
-      name: 'Transfer',
-      component: Transfer
-    }
+    // {
+    //   path: '/transfer',
+    //   name: 'Transfer',
+    //   component: Transfer
+    // }
   ]
 })
 

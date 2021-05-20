@@ -3,7 +3,7 @@
     <a href="https://polkadot.js.org/extension/" target="_blank" rel="noopener noreferrer">Get Polkadot.js extension?</a>
     <div>
       <label>Participating KSM Address <span style="color: #e53e3e">*</span></label>
-      <input v-if="manual" placeholder="Enter your address" v-model="ksm_address" :required="manual"/>
+      <input autocomplete="false" v-if="manual" placeholder="Enter your address" v-model="ksm_address" :required="manual"/>
       <template v-else>
         <button v-if="accounts.length === 0" @click.prevent="requestExtension">Connect Polkadot.js Extension</button>
         <select-address v-else :accounts="accounts" v-model="account"/>
@@ -15,16 +15,15 @@
     </div>
     <div>
       <label>Email <span style="color: #e53e3e">*</span></label>
-      <input placeholder="Enter your email" type="email" v-model="email" required/>
+      <input autocomplete="false" placeholder="Enter your email" type="email" v-model="email" required/>
     </div>
     <div>
       <label>Reference code (Optional)</label>
-      <input placeholder="Enter your reference code" v-model="referrer_code"/>
+      <input autocomplete="false" placeholder="Enter your reference code" v-model="referrer_code"/>
     </div>
     <div class="rule">
       <input v-model="isAgree" type="checkbox"/>
-      <div>I have read and accept the
-        <a class="css-7rgjox" target="_blank" rel="noopener noreferrer" href="/privacy">Privacy Policy.</a>
+      <div>I have read and accept the <a>Privacy Policy</a>
         and I agree to receive email communications about PolkaSmith and PolkaFoundry, including exclusive launch updates and liquidity provider program.
       </div>
     </div>
