@@ -35,16 +35,16 @@
       </div>
     </div>
     <button type="submit" class="btn">Register</button>
-    <vue-hcaptcha
-        sitekey="e8140feb-2d1f-4393-b4d8-5c83c982b919"
-        @verify="onVerify"
-        ref="captcha"
-        size="invisible"
-        @reset="captchaReset"
-        @expired="onExpire"
-        @challengeExpired="onExpire"
-        @error="onError"
-    />
+<!--    <vue-hcaptcha-->
+<!--        sitekey="e8140feb-2d1f-4393-b4d8-5c83c982b919"-->
+<!--        @verify="onVerify"-->
+<!--        ref="captcha"-->
+<!--        size="invisible"-->
+<!--        @reset="captchaReset"-->
+<!--        @expired="onExpire"-->
+<!--        @challengeExpired="onExpire"-->
+<!--        @error="onError"-->
+<!--    />-->
   </form>
 </template>
 
@@ -56,11 +56,13 @@ import SwitchBtn from "@/components/SwitchBtn";
 import SelectAddress from "@/components/SelectAddress";
 import { Add } from '@/services/auctions';
 import { GenerateCode } from '@/services/referal-code​';
-import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
+// import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
 
 export default {
   name: "Form",
-  components: { SelectAddress, SwitchBtn, VueHcaptcha },
+  components: { SelectAddress, SwitchBtn
+    // , VueHcaptcha
+  },
   data() {
     return {
       your_referrer_code: '',
@@ -156,11 +158,11 @@ export default {
           text: 'Please accept the Privacy Policy'});
       }
 
-      if (!this.verified) {
-        if (!this.verified) {
-          return this.$refs.captcha.execute();
-        }
-      }
+      // if (!this.verified) {
+      //   if (!this.verified) {
+      //     return this.$refs.captcha.execute();
+      //   }
+      // }
 
       try {
         const res = await Add({
@@ -168,7 +170,7 @@ export default {
           email: this.email,
           referrer_code: this.referrer_code,
           your_referrer_code: this.your_referrer_code,
-          captcha_code: this.token
+          // captcha_code: this.token
         });
 
         if (res) {
@@ -186,9 +188,10 @@ export default {
         return this.$notify({
           type: 'error',
           text: e && e.response && e.response.data && e.response.data.message ? e.response.data.message : e.toString() });
-      } finally {
-        this.$refs.captcha.reset();
       }
+      // finally {
+      //   this.$refs.captcha.reset();
+      // }
 
     },
 
@@ -236,6 +239,11 @@ export default {
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+    border-radius: 8px;
+    border: 2px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(273.46deg, #D52D6F 0%, #D62B69 0.01%, #F98395 48.66%, #0DCCFF 100%);
+    padding: 8px 16px;
   }
 
   .code img {
