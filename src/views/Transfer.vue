@@ -308,9 +308,9 @@ export default {
               this.checkLinkedWallet(this.currentWallet)
             })
           })
-          this.isWalletLoading = false
-          this.isSigning = false
         }
+      this.isWalletLoading = false
+      this.isSigning = false
       })
   },
   watch: {
