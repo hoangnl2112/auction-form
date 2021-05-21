@@ -69,9 +69,10 @@ import {BN_MILLION, stringToHex} from '@polkadot/util'
 import BN from "bn.js"
 import SelectAddress from "@/components/SelectAddress";
 import {decodeAddress, encodeAddress} from "@polkadot/util-crypto";
+import config from '../../config';
 const WAValidator = require('wallet-address-validator');
-const receivedAddress = '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY'
-const provider = new WsProvider('wss://rococo.polkafoundry.com');
+const provider = new WsProvider(config.ksm_endpoint);
+const receivedAddress = config.receivedAddress;
 let api = null
 
 export default {
@@ -178,7 +179,7 @@ export default {
             ksm_address: encodeAddress(decodeAddress(acc.address), 2),
             ...acc
           }))
-          this.selectedAccount = allAccounts[0]
+          this.selectedAccount = this.selectOptions[0]
           this.currentWallet = allAccounts[0].address
         })
       }).catch(() => {
