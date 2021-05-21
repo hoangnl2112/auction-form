@@ -22,7 +22,7 @@
               <button class="link-btn" style="border-top-left-radius: 0; border-bottom-left-radius: 0"
                       :disabled="isSigning || !erc20Address || !validAddress || isLinked"
                       @click="linkAddress">
-                {{ isSigning ? 'Loading...' : (isLinked ? 'Linked' : 'Link address') }}
+                {{ isSigning ? 'Loading...' : (isLinked ? 'Linked' : 'Link wallet') }}
               </button>
             </div>
             <span v-show="erc20Address && !isLinked" v-if="!validAddress" style="color: #a51c1c; font-size: 11px">Invalid Address !</span>
@@ -47,7 +47,7 @@
           <button class="link-btn"
                   style="width: 100%; background: linear-gradient(273.09deg, #D62860 0.01%, #FF919D 48.66%, #00E0FF 100%);"
                   :disabled="!isLinked || !amount || !selectedAccount || isSubmitting || !policyConfirmed"
-                  @click.prevent="submit" title="Complete link address and fill amount first">
+                  @click.prevent="submit" title="Complete link erc20 wallet and fill amount first">
             {{
               !isLinked && !isSigning ? 'Link ERC20 wallet before transfer' : isSubmitting ? 'Transfering' : 'Sign transfer'
             }}
@@ -124,7 +124,7 @@ export default {
             erc20_address: this.erc20Address,
           })
         }).catch(() => {
-          this.errorMessage = "Link Address failed. You must sign to link address before confirming the transaction"
+          this.errorMessage = "Link ERC20 wallet failed. You must sign to link ERC20 wallet before confirming the transaction"
           this.isSigning = false
           this.isLinked = false
         })
@@ -194,13 +194,13 @@ export default {
         headers: {'Content-Type': 'application/json'},
       }).then(r => {
         if (r.status === 200) {
-          this.successMessage = 'Link Address successful'
+          this.successMessage = 'Link ERC20 wallet successful'
           this.isSigning = false
           this.isLinked = true
         } else {
           this.isSigning = false,
               this.isLinked = false,
-              this.errorMessage = 'Sending linked address to the server failed. Please contact support@example.com. Block hash: #' + data.block_hash
+              this.errorMessage = 'Sending linked ERC20 wallet to the server failed. Please contact support@example.com. Block hash: #' + data.block_hash
         }
       })
     },
