@@ -10,14 +10,17 @@
             extension?</a>
           <div>
             <label>Participating KSM Address <span style="color: #e53e3e">*</span></label>
-              <button class="link-btn" style="border-radius: 4px;width: 100%" v-if="!currentWallet || isWalletLoading" @click="requestExtension">{{ isWalletLoading ? 'Loading...' : 'Connect Polkadot.js Extension' }}</button>
-              <select-address v-else :accounts="selectOptions" v-model="selectedAccount"/>
+            <button class="link-btn" style="border-radius: 4px;width: 100%" v-if="!currentWallet || isWalletLoading"
+                    @click="requestExtension">{{ isWalletLoading ? 'Loading...' : 'Connect Polkadot.js Extension' }}
+            </button>
+            <select-address v-else :accounts="selectOptions" v-model="selectedAccount"/>
           </div>
           <div>
             <label>Link your ERC20 wallet<span style="color: #e53e3e">*</span></label>
             <div style="display: flex; width: 100%">
               <input placeholder="Only ERC20 Address" type="text" v-model="erc20Address" :readonly="isLinked"/>
-              <button class="link-btn" style="border-top-left-radius: 0; border-bottom-left-radius: 0" :disabled="isSigning || !erc20Address || !validAddress || isLinked"
+              <button class="link-btn" style="border-top-left-radius: 0; border-bottom-left-radius: 0"
+                      :disabled="isSigning || !erc20Address || !validAddress || isLinked"
                       @click="linkAddress">
                 {{ isSigning ? 'Loading...' : (isLinked ? 'Linked' : 'Link address') }}
               </button>
@@ -28,20 +31,26 @@
           <div>
             <div style="width: 100%; display: flex">
               <label style="width: 50%">KSM Amount<span style="color: #e53e3e">*</span></label>
-              <div v-show="selectedAccount" style="width: 50%; text-align: right"><span>Balance: {{ ksmBalance ? ksmBalance.toHuman() : '...' }}</span></div>
+              <div v-show="selectedAccount" style="width: 50%; text-align: right">
+                <span>Balance: {{ ksmBalance ? ksmBalance.toHuman() : '...' }}</span></div>
             </div>
             <input placeholder="Enter KSM Amount" type="number" v-model="amount"/>
           </div>
           <div class="rule">
             <input type="checkbox" style="margin: 10px" v-model="policyConfirmed"/>
             <div>I have read and accept the
-              <a class="css-7rgjox" target="_blank" rel="noopener noreferrer" href="/privacy">Privacy Policy.</a>
+              <a class="css-7rgjox" target="_blank" rel="noopener noreferrer" href="#/privacy">Privacy Policy.</a>
               and I agree to receive email communications about Karura and Acala, including exclusive launch updates and
               liquidity provider program.
             </div>
           </div>
-          <button class="link-btn" style="width: 100%; background: linear-gradient(273.09deg, #D62860 0.01%, #FF919D 48.66%, #00E0FF 100%);" :disabled="!isLinked || !amount || !selectedAccount || isSubmitting || !policyConfirmed" @click.prevent="submit" title="Complete link address and fill amount first">
-            {{!isLinked && !isSigning ? 'Link ERC20 wallet before transfer' : isSubmitting ? 'Transfering' : 'Sign transfer' }}
+          <button class="link-btn"
+                  style="width: 100%; background: linear-gradient(273.09deg, #D62860 0.01%, #FF919D 48.66%, #00E0FF 100%);"
+                  :disabled="!isLinked || !amount || !selectedAccount || isSubmitting || !policyConfirmed"
+                  @click.prevent="submit" title="Complete link address and fill amount first">
+            {{
+              !isLinked && !isSigning ? 'Link ERC20 wallet before transfer' : isSubmitting ? 'Transfering' : 'Sign transfer'
+            }}
           </button>
         </div>
         <div v-show="message" variant="info">
@@ -59,10 +68,11 @@ import {ApiPromise, WsProvider} from '@polkadot/api'
 import {BN_MILLION, stringToHex} from '@polkadot/util'
 import BN from "bn.js"
 import SelectAddress from "@/components/SelectAddress";
-
+import {decodeAddress, encodeAddress} from "@polkadot/util-crypto";
 const WAValidator = require('wallet-address-validator');
 const receivedAddress = '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY'
 const provider = new WsProvider('wss://rococo.polkafoundry.com');
+let api = null
 
 export default {
   name: "Transfer",
@@ -134,7 +144,6 @@ export default {
         return
       }
 
-      const api = await ApiPromise.create({provider});
       const transferExtrinsic = api.tx.balances.transfer(receivedAddress, x)
       const injector = await web3FromSource(this.selectedAccount.meta.source);
 
@@ -165,7 +174,10 @@ export default {
             return
           }
           localStorage.setItem('SELECTED_KSM_WALLET', allAccounts[0].address);
-          this.selectOptions = allAccounts
+          this.selectOptions = allAccounts.map(acc => ({
+            ksm_address: encodeAddress(decodeAddress(acc.address), 2),
+            ...acc
+          }))
           this.selectedAccount = allAccounts[0]
           this.currentWallet = allAccounts[0].address
         })
@@ -175,7 +187,7 @@ export default {
       })
     },
     sendLinkRequest(data) {
-      fetch('https://crowdloan.polkafoundry.com/api/v1/account/verify-message', {
+      fetch('https://polkasmith.polkafoundry.com/api/v1/account/verify-message', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {'Content-Type': 'application/json'},
@@ -198,7 +210,7 @@ export default {
         this.isSigning = false
         return
       }
-      fetch(`https://crowdloan.polkafoundry.com/api/v1/account/link?kusama_address=${this.selectedAccount.address}&erc20_address=${erc20Address}`, {
+      fetch(`https://polkasmith.polkafoundry.com/api/v1/account/link?kusama_address=${this.selectedAccount.address}&erc20_address=${erc20Address}`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
       }).then(response => {
@@ -220,7 +232,7 @@ export default {
     },
     checkLinkedWallet(address) {
       this.isSigning = true
-      fetch(`https://crowdloan.polkafoundry.com/api/v1/account/${address}/check-link`, {
+      fetch(`https://polkasmith.polkafoundry.com/api/v1/account/${address}/check-link`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
       }).then(response => {
@@ -241,62 +253,65 @@ export default {
       });
     },
     listenBalanceChanged(address) {
-      ApiPromise.create({provider}).then((api) => {
-        api.query.system.account(address).then(
-            rs => {
-              let {data: {free: previousFree}} = rs
-              api.query.system.account(address, ({data: {free: currentFree}}) => {
-                const change = currentFree.sub(previousFree);
-                if (!change.isZero()) {
-                  api.query.system.account(address).then(account => {
-                    this.ksmBalance = account.data.free
-                  })
-                  previousFree = currentFree;
-                }
-              });
-            })
-      })
+      api.query.system.account(address).then(
+          rs => {
+            let {data: {free: previousFree}} = rs
+            api.query.system.account(address, ({data: {free: currentFree}}) => {
+              const change = currentFree.sub(previousFree);
+              if (!change.isZero()) {
+                api.query.system.account(address).then(account => {
+                  this.ksmBalance = account.data.free
+                })
+                previousFree = currentFree;
+              }
+            });
+          })
     }
     ,
     getBalance(address) {
-      ApiPromise.create({provider}).then((api) => {
-        api.query.system.account(address).then(account => {
-          this.ksmBalance = account.data.free
-        })
+      api.query.system.account(address).then(account => {
+        this.ksmBalance = account.data.free
       })
     }
   },
   mounted() {
-    setTimeout(() => {
+    ApiPromise.create({provider}).then(API => {
+      api = API
       if (this.currentWallet) {
-        this.getBalance(this.currentWallet)
-        this.listenBalanceChanged(this.currentWallet)
-        web3Enable('Polkafoundry Crowdloan').then((extensions) => {
-          if (extensions.length === 0) {
-            this.errorMessage = 'Polkadot.js Extension not installed or denied access. Please install or accept access to Polkadot.js Extension at "Manage Website Access" then reload this page.'
-            return
-          }
-          web3Accounts().then((allAccounts) => {
-            if (allAccounts.length === 0) {
+          this.getBalance(this.currentWallet)
+          this.listenBalanceChanged(this.currentWallet)
+          web3Enable('Polkafoundry Crowdloan').then((extensions) => {
+            if (extensions.length === 0) {
+              this.errorMessage = 'Polkadot.js Extension not installed or denied access. Please install or accept access to Polkadot.js Extension at "Manage Website Access" then reload this page.'
               return
             }
-            allAccounts.map((val) => {
-              if (val.address === this.currentWallet) {
-                this.selectedAccount = val
+            web3Accounts().then((allAccounts) => {
+              if (allAccounts.length === 0) {
+                return
               }
+              const options = allAccounts.map(acc => ({
+                ksm_address: encodeAddress(decodeAddress(acc.address), 2),
+                ...acc
+              }))
+              allAccounts.map((val) => {
+                if (val.address === this.currentWallet) {
+                  this.selectedAccount = {
+                    ksm_address: encodeAddress(decodeAddress(val.address), 2),
+                    ...val
+                  }
+                }
+              })
+              if (!this.selectedAccount) {
+                this.selectedAccount = this.selectOptions[0]
+              }
+              this.selectOptions = options
+              this.checkLinkedWallet(this.currentWallet)
             })
-            this.selectOptions = allAccounts
-            if (!this.currentWallet) {
-              this.selectedAccount = allAccounts[0]
-              this.currentWallet = allAccounts[0].address
-            }
-            this.checkLinkedWallet(this.currentWallet)
           })
-        })
-      }
-      this.isWalletLoading = false
-      this.isSigning = false
-    }, 1000)
+          this.isWalletLoading = false
+          this.isSigning = false
+        }
+      })
   },
   watch: {
     erc20Address() {
@@ -304,13 +319,13 @@ export default {
         this.validateERC20Address(this.erc20Address)
       }
     },
-    errorMessage () {
+    errorMessage() {
       this.$notify({
         type: 'error',
         text: this.errorMessage
       })
     },
-    successMessage () {
+    successMessage() {
       this.$notify({
         type: 'success',
         text: this.successMessage
