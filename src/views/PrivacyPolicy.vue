@@ -110,7 +110,8 @@ export default {
   methods: {
     select (val) {
       this.selectedMenu = val
-      document.getElementById('policy-' + val).scrollIntoView();
+      document.getElementById('policy-' + val).scrollIntoView(true);
+      window.scrollBy(0, -100)
     }
   }
 }
@@ -159,6 +160,22 @@ export default {
 
 .policy-selected {
   color: #00ff94;
+}
+
+@media only screen and (max-device-width: 768px) {
+  .policy-link {
+    display: none;
+  }
+  .policy-content {
+    margin: 0;
+    padding: 20px;
+    width: 100%;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  .policy-container {
+    margin-top: 50px;
+  }
 }
 
 </style>
