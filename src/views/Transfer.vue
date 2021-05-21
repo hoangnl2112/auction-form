@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="hero" align="center">
-      <div style="width: 640px">
+      <div style="width: 640px; background: rgba(128,128,128,0.38); border-radius: 10px; padding: 20px">
         <h1>
           PolkaSmith on Kusama Parachain Auction
         </h1>
@@ -25,8 +25,8 @@
                 {{ isSigning ? 'Loading...' : (isLinked ? 'Linked' : 'Link wallet') }}
               </button>
             </div>
-            <span v-show="erc20Address && !isLinked" v-if="!validAddress" style="color: #a51c1c; font-size: 11px">Invalid Address !</span>
-            <span v-show="erc20Address && !isLinked" v-else style="color: #00b33a; font-size: 11px">Valid Address</span>
+            <span v-show="erc20Address && !isLinked" v-if="!validAddress" style="color: #ff0f0f; font-size: 12px">Invalid Address !</span>
+            <span v-show="erc20Address && !isLinked" v-else style="color: #00ff52; font-size: 12px">Valid Address</span>
           </div>
           <div>
             <div style="width: 100%; display: flex">
