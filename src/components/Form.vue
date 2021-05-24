@@ -22,7 +22,7 @@
       <input autocomplete="false" placeholder="Enter your reference code" v-model="referrer_code"/>
     </div>
     <div>
-      <label>Your reference code is</label>
+      <label>Copy & paste your referral code to others</label>
       <div class="code" @click="copyCode">
         {{your_referrer_code}}
         <img alt src="../assets/copy.svg"/>
@@ -30,7 +30,7 @@
     </div>
     <div class="rule">
       <input v-model="isAgree" type="checkbox"/>
-      <div>I have read and accept the <a href="#/privacy">Privacy Policy</a>
+      <div>I have read and accept the <a href="#/privacy" target="_blank">Privacy Policy</a>
         and I agree to receive email communications about PolkaSmith and PolkaFoundry, including exclusive launch updates and liquidity provider program.
       </div>
     </div>

@@ -1,10 +1,10 @@
 <template>
   <div class="dropdown">
     <div class="dropdown-value" @click="toggleShow">
-      <Identicon class="icon" :size="28" theme="polkadot" :value="value.address"/>
+      <Identicon class="icon" :size="28" theme="polkadot" :value="value && value.address ? value.address : 'none'"/>
       <div class="wrapper">
-        <div class="name">{{ value.meta.name }}</div>
-        <div class="address">{{ value.ksm_address }}</div>
+        <div class="name">{{ value && value.meta ? value.meta.name : 'none' }}</div>
+        <div class="address">{{ value && value.ksm_address ? value.ksm_address : 'none' }}</div>
       </div>
     </div>
     <div class="dropdown-content" v-show="optionsShown">
@@ -12,7 +12,7 @@
           @mousedown="selectOption(account)"
           v-for="(account, index) in accounts"
           :key="index">
-        <Identicon class="icon" :size="28" theme="polkadot" :value="account.address"/>
+        <Identicon class="icon" :size="28" theme="polkadot" :value="value.address"/>
         <div class="wrapper">
           <div class="name">{{ account.meta.name }}</div>
           <div class="address">{{corruptAddress(account.ksm_address)}}</div>
