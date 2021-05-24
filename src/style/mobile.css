@@ -82,14 +82,19 @@
         padding: 0;
     }
 
-    .crowdloan > .row-flex {
+    .crowdloan > .grid {
+        display: flex;
         flex-direction: column;
-        background: transparent;
+    }
+
+    .crowdloan .title {
+        padding-left: 0;
+        text-align: center;
     }
 
     .crowdloan .item {
         background: linear-gradient(180deg, #18C9E880 0%, #05094080 60.12%, #05094080 100%);
-        border-radius: 8px;
+        border-radius: 8px !important;
         padding: 24px;
         display: flex;
         flex-direction: column;

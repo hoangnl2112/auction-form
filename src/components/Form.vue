@@ -35,16 +35,16 @@
       </div>
     </div>
     <button type="submit" class="btn">Register</button>
-<!--    <vue-hcaptcha-->
-<!--        sitekey="e8140feb-2d1f-4393-b4d8-5c83c982b919"-->
-<!--        @verify="onVerify"-->
-<!--        ref="captcha"-->
-<!--        size="invisible"-->
-<!--        @reset="captchaReset"-->
-<!--        @expired="onExpire"-->
-<!--        @challengeExpired="onExpire"-->
-<!--        @error="onError"-->
-<!--    />-->
+    <vue-hcaptcha
+        sitekey="e8140feb-2d1f-4393-b4d8-5c83c982b919"
+        @verify="onVerify"
+        ref="captcha"
+        size="invisible"
+        @reset="captchaReset"
+        @expired="onExpire"
+        @challengeExpired="onExpire"
+        @error="onError"
+    />
   </form>
 </template>
 
@@ -56,12 +56,12 @@ import SwitchBtn from "@/components/SwitchBtn";
 import SelectAddress from "@/components/SelectAddress";
 import { Add } from '@/services/auctions';
 import { GenerateCode } from '@/services/referal-code​';
-// import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
+import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
 
 export default {
   name: "Form",
   components: { SelectAddress, SwitchBtn
-    // , VueHcaptcha
+    , VueHcaptcha
   },
   data() {
     return {
@@ -164,11 +164,11 @@ export default {
           text: 'Please accept the Privacy Policy'});
       }
 
-      // if (!this.verified) {
-      //   if (!this.verified) {
-      //     return this.$refs.captcha.execute();
-      //   }
-      // }
+      if (!this.verified) {
+        if (!this.verified) {
+          return this.$refs.captcha.execute();
+        }
+      }
 
       try {
         const res = await Add({
@@ -176,7 +176,7 @@ export default {
           email: this.email,
           referrer_code: this.referrer_code,
           your_referrer_code: this.your_referrer_code,
-          // captcha_code: this.token
+          captcha_code: this.token
         });
 
         if (res) {
@@ -195,9 +195,9 @@ export default {
           type: 'error',
           text: e && e.response && e.response.data && e.response.data.message ? e.response.data.message : e.toString() });
       }
-      // finally {
-      //   this.$refs.captcha.reset();
-      // }
+      finally {
+        this.$refs.captcha.reset();
+      }
 
     },
 
@@ -255,5 +255,10 @@ export default {
   .code img {
     width: 16px;
     height: 16px;
+  }
+
+  input[type=checkbox] {
+    margin: 5px;
+    cursor: pointer;
   }
 </style>

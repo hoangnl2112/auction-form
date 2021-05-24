@@ -138,7 +138,7 @@ nav.border {
 .hero-subtitle {
     margin-top: 20px;
     margin-bottom: 40px;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px;
     color: #D9DAF2;
     max-width: 700px;
@@ -163,7 +163,7 @@ a {
     white-space: nowrap;
     text-decoration: none;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px;
     color: #14C4FF;
     cursor: pointer;
@@ -174,7 +174,7 @@ a {
 }
 
 .explanation .title {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 36px;
     line-height: 44px;
     text-align: center;
@@ -206,13 +206,12 @@ a {
 .explanation .item .title {
     font-size: 24px;
     line-height: 36px;
-    font-weight: 700;
-    text-align: start;
+    font-weight: 500;
 }
 
 .explanation .item .detail {
     margin-top: 8px;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px;
     color: #D9DAF2;
 }
@@ -230,7 +229,7 @@ a {
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    font-weight: bold;
+    font-weight: 500;
     font-size: 16px;
     line-height: 24px;
     color: #FFFFFF;
@@ -256,7 +255,7 @@ a {
 
 .counter .title {
     font-size: 36px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 44px;
     margin: 0;
 }
@@ -272,7 +271,7 @@ a {
 
 .counter .subtitle {
     margin-top: 20px;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px;
     color: #D9DAF2;
 }
@@ -305,7 +304,7 @@ a {
 
 .form .subtitle {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500;
     max-width: 900px;
     margin: 32px auto 40px;
 }
@@ -358,7 +357,7 @@ a {
     line-height: 1.2;
     border-radius: 0.375rem;
     border: none;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
     height: 42px;
     font-size: 16px;
@@ -398,26 +397,29 @@ a {
 }
 
 .form .rule > div {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px;
     color: #D9DAF2;
 }
 
 .crowdloan {
     margin-top: 160px;
-    padding: 0 var(--padding-horizon-s);
+    padding: var(--padding-horizon-s);
+    background: #080C33;
 }
 
 .crowdloan .title {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 36px;
     line-height: 44px;
-    text-align: center;
     color: #FFFFFF;
+    padding-left: 24px;
 }
 
-.crowdloan > .row-flex {
-    background: linear-gradient(180deg, #18C9E880 0%, #05094080 60.12%, #05094080 100%);
+.crowdloan > .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
     border-radius: 8px;
 }
 
@@ -425,31 +427,62 @@ a {
     padding: 40px;
 }
 
+.crowdloan .item:nth-child(1) {
+    background: linear-gradient(180deg, #5F617A 0%, #080C33 100%);
+    border-radius: 8px 0px 0px 0px;
+}
+
+.crowdloan .item:nth-child(2) {
+    background: linear-gradient(180deg, #383B5B 0%, #080C33 100%);
+}
+
+.crowdloan .item:nth-child(3) {
+    background: linear-gradient(180deg, #5D6079 0%, #080C33 100%);
+    border-radius: 0px 8px 0px 0px;
+}
+
+.crowdloan .item:nth-child(4) {
+    background: linear-gradient(180deg, #36395A 0%, #080C33 100%);
+    border-radius: 0px 0px 0px 8px;
+}
+
+.crowdloan .item:nth-child(5) {
+    background: linear-gradient(180deg, #5A5D77 0%, #080C33 100%);
+}
+
+.crowdloan .item:nth-child(6) {
+    background: linear-gradient(180deg, #373A5A 0%, #080C33 100%);
+    border-radius: 0px 0px 8px 0px;
+}
+
 .crowdloan .item .title {
-    font-weight: bold;
+    font-family: 'Poppins';
+    font-weight: 500;
     font-size: 24px;
     line-height: 36px;
     text-align: start;
 }
 
 .crowdloan .item p {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px;
     color: #D9DAF2;
 }
 
 .section {
-    margin-top: 160px;
-    padding-right: 40%;
-    padding-left: var(--padding-horizon-s);
+    margin-top: 120px;
+    margin-bottom: 240px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .section .title {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 36px;
     line-height: 44px;
-    text-align: start;
 }
 
 .section img {
@@ -466,6 +499,7 @@ a {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 32px;
     padding-bottom: 32px;
+    max-width: 520px;
 }
 
 .section-item:last-child {
@@ -473,14 +507,15 @@ a {
 }
 
 .section-item .title {
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 500;
     padding: 0 24px 0 0;
+    margin-bottom: 12px;
 }
 
 .section-item p {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px;
     color: #D9DAF2;
     margin: 0;
@@ -579,7 +614,7 @@ a {
     border: none;
     outline: none;
     padding: 8px 12px;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px;
     border-radius: 4px 0 0 4px;
 }
@@ -622,7 +657,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px;
     color: #D9DAF2;
 }

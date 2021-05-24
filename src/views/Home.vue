@@ -58,7 +58,7 @@
     </div>
     <div class="crowdloan">
       <h2 class="title">PolkaSmith Auction Plan</h2>
-      <div class="row-flex">
+      <div class="grid">
         <div class="item">
           <div class="title">1st - 8th Parachain Slot</div>
           <p>PolkaSmith will participate in 1st-8th slot auctions to win. In other words, we aim to lease a parachain slot for 48 weeks (each lease period is six weeks). Understanding that competition for parachain is intense, if PolkaSmith doesn’t win the first auction, we will keep bidding until we won a slot and only give up after N rounds (TBA).
@@ -74,8 +74,6 @@
           <p>ePKF is the “equivalent PKF” token on our launchpad, Red Kite, which means even if you don't stake any PKF on Red Kite, you can get the same tier benefits when owning a corresponding amount of ePKF. For example, owning 500 ePKFs gives you all the Dove tier benefits (including joining IDOs) without staking 500 PKFs. Note: This reward only applies to crowdloan on Red Kite.
           </p>
         </div>
-      </div>
-      <div class="row-flex" style="margin-top: 12px">
         <div class="item">
           <div class="title">0.5% Referrals Rewards</div>
           <p>The reward is also exclusive for crowdloan on Red Kite. Community members of PolkaFoundry/PolkaSmith can earn some PKF directly by referring friends to join the project’s crowdloan on Red Kite. Each referrer and the referred person will receive the amount of PKF equivalent to 0.5% of the referred person’s auction incentives.
@@ -94,8 +92,8 @@
       </div>
     </div>
     <div class="section">
-      <h2 class="title">Crowdloan <br/>Participation Methods</h2>
-      <img alt src="../assets/mask-crowdloan.svg"/>
+      <h2 class="title">Crowdloan Participation <br/>Methods</h2>
+<!--      <img alt src="../assets/mask-crowdloan.svg"/>-->
       <div class="section-item">
         <div class="title">STEP 1- Register and Subscribe</div>
         <p>After your registration, we will inform you of PolkaSmith's latest auction plan through email. You may also
@@ -113,32 +111,32 @@
         <p>When the crowdloan starts, join the action on any of our participation channels (mentioned below).</p>
       </div>
     </div>
-    <div class="participation">
-      <h2 class="title">Participation channels</h2>
-      <div class="channels">
-        <a class="channel" href="https://redkite.polkafoundry.com/" target="_blank">
-          <img alt src="../assets/redkite.png"/>
-          <div>
-            <p>Redkite</p>
-            <p>Upcoming</p>
-          </div>
-        </a>
-        <a class="channel" href="https://kusama.network" target="_blank">
-          <img alt src="../assets/kusama.png"/>
-          <div>
-            <p>Kusama</p>
-            <p>Upcoming</p>
-          </div>
-        </a>
-        <div class="channel">
-          <img alt src="../assets/exchange.png"/>
-          <div>
-            <p>Top-tier exchange</p>
-            <p>TBA</p>
-          </div>
-        </div>
-      </div>
-    </div>
+<!--    <div class="participation">-->
+<!--      <h2 class="title">Participation channels</h2>-->
+<!--      <div class="channels">-->
+<!--        <a class="channel" href="https://redkite.polkafoundry.com/" target="_blank">-->
+<!--          <img alt src="../assets/redkite.png"/>-->
+<!--          <div>-->
+<!--            <p>Redkite</p>-->
+<!--            <p>Upcoming</p>-->
+<!--          </div>-->
+<!--        </a>-->
+<!--        <a class="channel" href="https://kusama.network" target="_blank">-->
+<!--          <img alt src="../assets/kusama.png"/>-->
+<!--          <div>-->
+<!--            <p>Kusama</p>-->
+<!--            <p>Upcoming</p>-->
+<!--          </div>-->
+<!--        </a>-->
+<!--        <div class="channel">-->
+<!--          <img alt src="../assets/exchange.png"/>-->
+<!--          <div>-->
+<!--            <p>Top-tier exchange</p>-->
+<!--            <p>TBA</p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
     <div class="faq">
       <div class="title"></div>
       <qa-item v-for="(qa, i) in qas" :key="i" :q="qa.q" :a="qa.a" :note="qa.note"/>
