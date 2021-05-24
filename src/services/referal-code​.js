@@ -2,6 +2,6 @@
 
 import { Get } from './index';
 
-export const GenerateCode = async () => {
-    return await Get('/referal-code/generate');
+export const GenerateCode = async (params) => {
+    return await Get('/referal-code/generate', params);
 };

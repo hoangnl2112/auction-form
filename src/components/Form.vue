@@ -82,7 +82,7 @@ export default {
   },
 
   async created () {
-    await this.GenerateCodeYourCode();
+    // await this.GenerateCodeYourCode();
   },
 
   watch: {
@@ -90,6 +90,10 @@ export default {
       if(val && val.ksm_address) {
         this.ksm_address = val.ksm_address
       }
+    },
+
+    ksm_address: async function(val) {
+      await this.GenerateCodeYourCode(val);
     }
   },
 
@@ -98,20 +102,22 @@ export default {
       console.log(error)
     },
 
-    async GenerateCodeYourCode() {
+    async GenerateCodeYourCode(ksm_address) {
       try {
-        const res = await GenerateCode();
+        const res = await GenerateCode({ ksm_address });
         this.your_referrer_code = res.code;
       } catch (e) {
         console.error(e);
       }
     },
+
     async onVerify(token, ekey) {
       this.verified = true;
       this.token = token;
       this.eKey = ekey;
       await this.submit();
     },
+
     captchaReset() {
       this.verified = false;
       this.token = null;
@@ -175,11 +181,11 @@ export default {
 
         if (res) {
           // reset form
-          this.ksm_address = '';
+          // this.ksm_address = '';
           this.email = '';
           this.referrer_code = '';
-          this.your_referrer_code = '';
-          await this.GenerateCodeYourCode();
+          // this.your_referrer_code = '';
+          // await this.GenerateCodeYourCode();
         }
         return this.$notify({
           type: 'success',
