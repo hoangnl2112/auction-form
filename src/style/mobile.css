@@ -63,8 +63,10 @@
         position: static;
         white-space: unset;
         transform: none;
-        display: inline;
+        display: inline-block;
         text-align: center;
+        margin-top: 12px;
+        margin-bottom: 100px;
     }
 
     .explanation + .row-flex {
@@ -132,6 +134,10 @@
     .section-main {
         flex-direction: column;
         border: none;
+    }
+
+    .section-main .section-item {
+        border-left: none !important;
     }
 
     .section-item {

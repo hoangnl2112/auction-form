@@ -65,19 +65,19 @@
           </p>
         </div>
         <div class="item">
-          <div class="title">100 PKS/ 1 KSM</div>
+          <div class="title">100 PKS<span class="small"> / 1 KSM</span></div>
           <div class="subtitle">Winning Rewards</div>
           <p>If PolkaSmith wins, every KSM that supports PolkaSmith in the Kusama Parachain Slot auction through the crowdloan will be entitled to 100 $PKS as a reward. PKS is the native token of PolkaSmith, which you can claim from PKF at a 1:1 ratio. Note that if PolkaSmith wins Kusama Slot, the value for PKF may scale significantly.
           </p>
         </div>
         <div class="item">
-          <div class="title">50 ePKF/ 1 KSM</div>
+          <div class="title">50 ePKF<span class="small"> / 1 KSM</span></div>
           <div class="subtitle">Whether Win or Lose</div>
           <p>ePKF is the “equivalent PKF” token on our launchpad, Red Kite, which means even if you don't stake any PKF on Red Kite, you can get the same tier benefits when owning a corresponding amount of ePKF. For example, owning 500 ePKFs gives you all the Dove tier benefits (including joining IDOs) without staking 500 PKFs. Note: This reward only applies to crowdloan on Red Kite.
           </p>
         </div>
         <div class="item">
-          <div class="title">0.5%</div>
+          <div class="title">0.5<span class="small"> %</span></div>
           <div class="subtitle">Referrals Rewards</div>
           <p>The reward is also exclusive for crowdloan on Red Kite. Community members of PolkaFoundry/PolkaSmith can earn some PKF directly by referring friends to join the project’s crowdloan on Red Kite. Each referrer and the referred person will receive the amount of PKF equivalent to 0.5% of the referred person’s auction incentives.
           </p>

@@ -237,7 +237,7 @@ export default {
 <style scoped>
   form {
     display: grid;
-    grid-gap: 12px;
+    grid-gap: 24px;
   }
 
   .code {
