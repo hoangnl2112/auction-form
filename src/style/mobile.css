@@ -12,6 +12,10 @@
         display: none;
     }
 
+    .hero {
+        background: url("../assets/bg_mobile.png");
+    }
+
     .hero-title {
         font-size: 36px;
         line-height: 44px;
@@ -96,19 +100,21 @@
         background: linear-gradient(180deg, #18C9E880 0%, #05094080 60.12%, #05094080 100%);
         border-radius: 8px !important;
         padding: 24px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         margin-bottom: 12px;
     }
 
-    .crowdloan .item .title,
     .crowdloan .item p {
         text-align: center;
     }
 
     .crowdloan .item .title {
-        margin: 12px 0;
+        font-size: 28px;
+        line-height: 32px;
+        margin-bottom: 0;
+    }
+
+    .crowdloan .item .subtitle {
+        margin-bottom: 8px;
     }
 
     .crowdloan .item p {
@@ -123,13 +129,19 @@
         text-align: center;
     }
 
-    .section img {
-        display: none;
+    .section-main {
+        flex-direction: column;
+        border: none;
     }
 
     .section-item {
-        padding: 24px 0 12px;
+        padding: 24px !important;
         text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .section-main + .section-item {
+        border: none;
     }
 
     .section-item .title {

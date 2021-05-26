@@ -87,11 +87,8 @@ nav.border {
     height: 100vh;
     background: url("../assets/bg.png");
     background-size: cover;
-    display: flex;
     padding-top: 160px;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    padding-left: var(--padding-horizon-s);
 }
 
 @keyframes slideUp {
@@ -128,7 +125,7 @@ nav.border {
 }
 
 .hero-title {
-    font-size: 60px;
+    font-size: 56px;
     line-height: 60px;
     font-weight: 400;
     margin-bottom: 0;
@@ -142,11 +139,11 @@ nav.border {
     line-height: 24px;
     color: #D9DAF2;
     max-width: 700px;
-    animation: slideRight 1s;
+    animation: slideLeft 1s;
 }
 
 a.hero-btn {
-    width: 160px;
+    width: 320px;
     height: 42px;
     background: linear-gradient(273.09deg, #D62860 0.01%, #FF919D 48.66%, #00E0FF 100%);
     border-radius: 4px;
@@ -170,13 +167,13 @@ a {
 }
 
 .explanation {
-    padding: 0 var(--padding-horizon-s);
+    padding: var(--padding-horizon-s);
 }
 
 .explanation .title {
     font-weight: 500;
-    font-size: 36px;
-    line-height: 44px;
+    font-size: 44px;
+    line-height: 48px;
     text-align: center;
 }
 
@@ -185,7 +182,6 @@ a {
     justify-content: space-between;
     background: linear-gradient(180deg, #1CD8F580 0%, #05094080 60.12%, #05094080 100%);
     border-radius: 8px;
-    padding-bottom: 100px;
     position: relative;
 }
 
@@ -205,14 +201,14 @@ a {
 
 .explanation .item .title {
     font-size: 24px;
-    line-height: 36px;
+    line-height: 32px;
     font-weight: 500;
 }
 
 .explanation .item .detail {
-    margin-top: 8px;
+    margin-top: 16px;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 26px;
     color: #D9DAF2;
 }
 
@@ -225,21 +221,20 @@ a {
 }
 
 .explanation .notice {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-top: 24px;
+    text-align: center;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 20px;
+    line-height: 26px;
     color: #FFFFFF;
     display: flex;
     white-space: nowrap;
+    justify-content: center;
 }
 
 .explanation .notice a {
     font-weight: bold;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 24px;
     text-decoration-line: underline;
     color: #14C4FF;
@@ -247,16 +242,15 @@ a {
 }
 
 .counter {
-    flex: 0 0 calc(50% - 50px);
-    margin-top: 160px;
-    margin-right: 100px;
+    flex: 0 0 calc(50% - 40px);
+    margin-right: 80px;
     padding-left: var(--padding-horizon);
 }
 
 .counter .title {
-    font-size: 36px;
+    font-size: 44px;
     font-weight: 500;
-    line-height: 44px;
+    line-height: 48px;
     margin: 0;
 }
 
@@ -272,7 +266,7 @@ a {
 .counter .subtitle {
     margin-top: 20px;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 26px;
     color: #D9DAF2;
 }
 
@@ -293,8 +287,7 @@ a {
 }
 
 .form {
-    margin-top: 160px;
-    flex: 0 0 calc(50% - 50px);
+    flex: 0 0 calc(50% - 40px);
     padding-right: var(--padding-horizon);
 }
 
@@ -410,10 +403,10 @@ a {
 
 .crowdloan .title {
     font-weight: 500;
-    font-size: 36px;
-    line-height: 44px;
+    font-size: 44px;
+    line-height: 48px;
     color: #FFFFFF;
-    padding-left: 24px;
+    text-align: center;
 }
 
 .crowdloan > .grid {
@@ -425,42 +418,55 @@ a {
 
 .crowdloan .item {
     padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .crowdloan .item:nth-child(1) {
-    background: linear-gradient(180deg, #5F617A 0%, #080C33 100%);
+    background: linear-gradient(180deg, #481845 0%, #080C33 100%);
     border-radius: 8px 0px 0px 0px;
 }
 
 .crowdloan .item:nth-child(2) {
-    background: linear-gradient(180deg, #383B5B 0%, #080C33 100%);
+    background: linear-gradient(180deg, #E6447D88 0%, #080C3388 100%);
 }
 
 .crowdloan .item:nth-child(3) {
-    background: linear-gradient(180deg, #5D6079 0%, #080C33 100%);
+    background: linear-gradient(180deg, #481845 0%, #080C33 100%);
     border-radius: 0px 8px 0px 0px;
 }
 
 .crowdloan .item:nth-child(4) {
-    background: linear-gradient(180deg, #36395A 0%, #080C33 100%);
+    background: linear-gradient(180deg, #872C5E 0%, #080C33 100%);
     border-radius: 0px 0px 0px 8px;
 }
 
 .crowdloan .item:nth-child(5) {
-    background: linear-gradient(180deg, #5A5D77 0%, #080C33 100%);
+    background: linear-gradient(180deg, #481845 0%, #080C33 100%);
 }
 
 .crowdloan .item:nth-child(6) {
-    background: linear-gradient(180deg, #373A5A 0%, #080C33 100%);
+    background: linear-gradient(180deg, #8B2E5F 0%, #080C33 100%);
     border-radius: 0px 0px 8px 0px;
 }
 
 .crowdloan .item .title {
-    font-family: 'Poppins';
     font-weight: 500;
-    font-size: 24px;
-    line-height: 36px;
-    text-align: start;
+    font-size: 36px;
+    line-height: 42px;
+    text-align: center;
+}
+
+.crowdloan .item .subtitle {
+    margin-top: 8px;
+    white-space: nowrap;
+    padding: 4px 24px;
+    font-size: 16px;
+    line-height: 24px;
+    background: #DA366E;
+    border-radius: 60px;
+    text-align: center;
 }
 
 .crowdloan .item p {
@@ -481,36 +487,49 @@ a {
 
 .section .title {
     font-weight: 500;
-    font-size: 36px;
-    line-height: 44px;
-}
-
-.section img {
-    position: absolute;
-    top: 0;
-    right: 0;
+    font-size: 44px;
+    line-height: 48px;
 }
 
 .section-main {
     display: flex;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-main .section-item {
+    flex: 0 0 50%;
+}
+
+.section-main .section-item:first-child {
+    padding-left: var(--padding-horizon-s);
+}
+
+.section-main .section-item:last-child {
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding-right: var(--padding-horizon-s);
 }
 
 .section-item {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 32px;
-    padding-bottom: 32px;
-    max-width: 520px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.section-item:last-child {
-    border-bottom: none;
+.section-item .step {
+    padding: 4px 24px;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 60px;
+    background: #DA366E;
+    margin-bottom: 8px;
 }
 
 .section-item .title {
     font-size: 20px;
     line-height: 26px;
     font-weight: 500;
-    padding: 0 24px 0 0;
     margin-bottom: 12px;
 }
 

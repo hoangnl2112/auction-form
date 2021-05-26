@@ -7,7 +7,7 @@
       <p class="hero-subtitle">
         PolkaSmith is the one-stop production hub for DeFi and NFT dApps on Kusama. It aims to provide all the necessary features, services, integrations, and tools for all DeFi and NFT experiments, innovations, and real-world solutions. PolkaSmith is no newcomer but a canary network of PolkaFoundry on Kusama. Learn more about PolkaFoundry here.
       </p>
-      <a class="hero-btn" href="https://polkafoundry.com/" target="_blank" rel="noopener noreferrer">Learn more</a>
+      <a class="hero-btn" href="https://polkafoundry.com/" target="_blank" rel="noopener noreferrer">Learn more about PolkaFoundry</a>
     </div>
     <div class="explanation" id="explanation">
       <h2 class="title">About Kusama Parachain Slot Auction</h2>
@@ -27,11 +27,10 @@
           <div class="title">Crowdloan</div>
           <p class="detail">Kusama allows parachains to source KSM for their parachain bids in a decentralized crowdloan directly on Kusama or a 3rd-party platform. In crowdloan, KSM holders can contribute their KSM to support the project they believe should receive a parachain slot. In return, the project provides rewards to its supporters. If the project wins, the bonded DOT or KSM is locked by the network for the duration of the parachain slot, after which the tokens are unlocked and may be reclaimed by those who contributed.</p>
         </div>
-        <div class="divider"></div>
-        <div class="notice">
-          Get to know more about Kusama Parachain Slot Auction
-          <a href="https://kusama.network/auctions" target="_blank" rel="noopener noreferrer">here.</a>
-        </div>
+      </div>
+      <div class="notice">
+        Get to know more about Kusama Parachain Slot Auction
+        <a href="https://kusama.network/auctions" target="_blank" rel="noopener noreferrer">here.</a>
       </div>
     </div>
     <div class="row-flex r">
@@ -60,83 +59,90 @@
       <h2 class="title">PolkaSmith Auction Plan</h2>
       <div class="grid">
         <div class="item">
-          <div class="title">1st - 8th Parachain Slot</div>
+          <div class="title">1st - 8th</div>
+          <div class="subtitle">Parachain Slot</div>
           <p>PolkaSmith will participate in 1st-8th slot auctions to win. In other words, we aim to lease a parachain slot for 48 weeks (each lease period is six weeks). Understanding that competition for parachain is intense, if PolkaSmith doesn’t win the first auction, we will keep bidding until we won a slot and only give up after N rounds (TBA).
           </p>
         </div>
         <div class="item">
-          <div class="title">100 PKS/ 1 KSM Winning Rewards</div>
+          <div class="title">100 PKS/ 1 KSM</div>
+          <div class="subtitle">Winning Rewards</div>
           <p>If PolkaSmith wins, every KSM that supports PolkaSmith in the Kusama Parachain Slot auction through the crowdloan will be entitled to 100 $PKS as a reward. PKS is the native token of PolkaSmith, which you can claim from PKF at a 1:1 ratio. Note that if PolkaSmith wins Kusama Slot, the value for PKF may scale significantly.
           </p>
         </div>
         <div class="item">
-          <div class="title">50 ePKF/ 1 KSM Whether Win or Lose</div>
+          <div class="title">50 ePKF/ 1 KSM</div>
+          <div class="subtitle">Whether Win or Lose</div>
           <p>ePKF is the “equivalent PKF” token on our launchpad, Red Kite, which means even if you don't stake any PKF on Red Kite, you can get the same tier benefits when owning a corresponding amount of ePKF. For example, owning 500 ePKFs gives you all the Dove tier benefits (including joining IDOs) without staking 500 PKFs. Note: This reward only applies to crowdloan on Red Kite.
           </p>
         </div>
         <div class="item">
-          <div class="title">0.5% Referrals Rewards</div>
+          <div class="title">0.5%</div>
+          <div class="subtitle">Referrals Rewards</div>
           <p>The reward is also exclusive for crowdloan on Red Kite. Community members of PolkaFoundry/PolkaSmith can earn some PKF directly by referring friends to join the project’s crowdloan on Red Kite. Each referrer and the referred person will receive the amount of PKF equivalent to 0.5% of the referred person’s auction incentives.
           </p>
         </div>
         <div class="item">
-          <div class="title">7,000,000 PKS Prize Pool</div>
+          <div class="title">7,000,000 PKS</div>
+          <div class="subtitle">Prize Pool</div>
           <p>The PolkaSmith’s prize tool for Kusama Parachain Slot Auction is worth 7,000,000 PKS, equivalent to 7,000,000 PKF, 3.5% of PKF’s total supply (200,000,000 PKF). That means when the KSM in the PolkaSmith crowdloan reaches 70,000, there are no more PKS that can be distributed to contributors and we will stop receiving contributions.
           </p>
         </div>
         <div class="item">
-          <div class="title">Rewards Distribution</div>
+          <div class="title">Rewards <br/>Distribution</div>
           <p>As soon as contributors join the PolkaSmith crowdloan, 100% ePKF rewards will be delivered immediately. After PolkaSmith wins a parachain slot, 35% of the PKS tokens in the reward pool will go to the contributors' wallet addresses. The remaining 65% of PKS tokens will be vested over 11 months.
           </p>
         </div>
       </div>
     </div>
     <div class="section">
-      <h2 class="title">Crowdloan Participation <br/>Methods</h2>
-<!--      <img alt src="../assets/mask-crowdloan.svg"/>-->
-      <div class="section-item">
-        <div class="title">STEP 1- Register and Subscribe</div>
-        <p>After your registration, we will inform you of PolkaSmith's latest auction plan through email. You may also
-          want to subscribe to our
-          <a href="https://twitter.com/PolkaFoundry" target="_blank">Twitter</a>, <a href="https://t.me/PolkaFoundryANN" target="_blank">Telegram</a>
-          and <a href="https://medium.com/polkafoundry/tagged/polkafoundry" target="_blank">Medium</a> for PolkaSmith and PolkaFoundry for updates.
-        </p>
+      <h2 class="title">Crowdloan Participation Methods</h2>
+      <div class="section-main">
+        <div class="section-item">
+          <div class="step">STEP 1</div>
+          <div class="title">Register and Subscribe</div>
+          <p>After your registration, we will inform you of PolkaSmith's latest auction plan through email. You may also
+            want to subscribe to our
+            <a href="https://twitter.com/PolkaFoundry" target="_blank">Twitter</a>, <a href="https://t.me/PolkaFoundryANN" target="_blank">Telegram</a>
+            and <a href="https://medium.com/polkafoundry/tagged/polkafoundry" target="_blank">Medium</a> for PolkaSmith and PolkaFoundry for updates.
+          </p>
+        </div>
+        <div class="section-item">
+          <div class="step">STEP 2</div>
+          <div class="title">Prepare your KSM</div>
+          <p>If your KSM are bonded, you will need to unbond your KSM at least 7 days before the crowdloan start date</p>
+          <img style="margin-top: 12px" alt src="../assets/ksm.png"/>
+        </div>
       </div>
       <div class="section-item">
-        <div class="title">STEP 2- Prepare your KSM</div>
-        <p>If your KSM are bonded, you will need to unbond your KSM at least 7 days before the crowdloan start date</p>
-      </div>
-      <div class="section-item">
-        <div class="title">STEP 3 - Participation</div>
+        <div class="step">STEP 3</div>
+        <div class="title">Participation</div>
         <p>When the crowdloan starts, join the action on any of our participation channels (mentioned below).</p>
+        <div class="channels">
+          <a class="channel" href="https://redkite.polkafoundry.com/" target="_blank">
+            <img alt src="../assets/redkite.png"/>
+            <div>
+              <p>Redkite</p>
+              <p>Upcoming</p>
+            </div>
+          </a>
+          <a class="channel" href="https://kusama.network" target="_blank">
+            <img alt src="../assets/kusama.png"/>
+            <div>
+              <p>Kusama</p>
+              <p>Upcoming</p>
+            </div>
+          </a>
+          <div class="channel">
+            <img alt src="../assets/exchange.png"/>
+            <div>
+              <p>Top-tier exchange</p>
+              <p>TBA</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-<!--    <div class="participation">-->
-<!--      <h2 class="title">Participation channels</h2>-->
-<!--      <div class="channels">-->
-<!--        <a class="channel" href="https://redkite.polkafoundry.com/" target="_blank">-->
-<!--          <img alt src="../assets/redkite.png"/>-->
-<!--          <div>-->
-<!--            <p>Redkite</p>-->
-<!--            <p>Upcoming</p>-->
-<!--          </div>-->
-<!--        </a>-->
-<!--        <a class="channel" href="https://kusama.network" target="_blank">-->
-<!--          <img alt src="../assets/kusama.png"/>-->
-<!--          <div>-->
-<!--            <p>Kusama</p>-->
-<!--            <p>Upcoming</p>-->
-<!--          </div>-->
-<!--        </a>-->
-<!--        <div class="channel">-->
-<!--          <img alt src="../assets/exchange.png"/>-->
-<!--          <div>-->
-<!--            <p>Top-tier exchange</p>-->
-<!--            <p>TBA</p>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
     <div class="faq">
       <div class="title"></div>
       <qa-item v-for="(qa, i) in qas" :key="i" :q="qa.q" :a="qa.a" :note="qa.note"/>
