@@ -106,11 +106,13 @@
             <a href="https://twitter.com/PolkaFoundry" target="_blank">Twitter</a>, <a href="https://t.me/PolkaFoundryANN" target="_blank">Telegram</a>
             and <a href="https://medium.com/polkafoundry/tagged/polkafoundry" target="_blank">Medium</a> for PolkaSmith and PolkaFoundry for updates.
           </p>
+          <img style="margin-top: 12px" alt src="../assets/following.png"/>
         </div>
         <div class="section-item">
           <div class="step">STEP 2</div>
           <div class="title">Prepare your KSM</div>
           <p>If your KSM are bonded, you will need to unbond your KSM at least 7 days before the crowdloan start date</p>
+          <div style="flex: 1 1 0"/>
           <img style="margin-top: 12px" alt src="../assets/ksm.png"/>
         </div>
       </div>
