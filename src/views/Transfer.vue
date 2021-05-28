@@ -1,64 +1,63 @@
 <template>
   <div>
     <div class="hero" align="center">
-      <div style="width: 640px; background: rgba(128,128,128,0.38); border-radius: 10px; padding: 20px">
-        <h1>
-          PolkaSmith on Kusama Parachain Auction
-        </h1>
-        <div class="form" style="margin-top: 0;flex: none;padding-right: 0">
-          <a href="https://polkadot.js.org/extension/" target="_blank" rel="noopener noreferrer">Get Polkadot.js
-            extension?</a>
-          <div>
-            <label>Participating KSM Address <span style="color: #e53e3e">*</span></label>
-            <button class="link-btn" style="border-radius: 4px;width: 100%" v-if="!currentWallet || isWalletLoading"
-                    @click="requestExtension">{{ isWalletLoading ? 'Loading...' : 'Connect Polkadot.js Extension' }}
-            </button>
-            <select-address v-else :accounts="selectOptions" v-model="selectedAccount"/>
-          </div>
-          <div>
-            <label>Link your ERC20 wallet<span style="color: #e53e3e">*</span></label>
-            <div style="display: flex; width: 100%">
-              <input placeholder="Only ERC20 Address" type="text" v-model="erc20Address" :readonly="isLinked"/>
-              <button class="link-btn" style="border-top-left-radius: 0; border-bottom-left-radius: 0"
-                      :disabled="isSigning || !erc20Address || !validAddress || isLinked"
-                      @click="linkAddress">
-                {{ isSigning ? 'Loading...' : (isLinked ? 'Linked' : 'Link wallet') }}
+      <div class="overlay">
+        <div class="main">
+          <h1 class="title">
+            PolkaFoundry Crowdloan
+          </h1>
+          <div class="form">
+            <div>
+              <label>Connect to KSM Wallet</label>
+              <button class="link-btn" style="border-radius: 4px;width: 100%" v-if="!currentWallet || isWalletLoading"
+                      @click="requestExtension">{{ isWalletLoading ? 'Loading...' : 'Connect Polkadot.js Extension' }}
               </button>
+              <select-address v-else :accounts="selectOptions" v-model="selectedAccount"/>
             </div>
-            <span v-show="erc20Address && !isLinked" v-if="!validAddress" style="color: #ff0f0f; font-size: 12px">Invalid Address !</span>
-            <span v-show="erc20Address && !isLinked" v-else style="color: #00ff52; font-size: 12px">Valid Address</span>
-          </div>
-          <div>
-            <div style="width: 100%; display: flex">
-              <label style="width: 50%">KSM Amount<span style="color: #e53e3e">*</span></label>
-              <div v-show="selectedAccount" style="width: 50%; text-align: right">
-                <span>Balance: {{ ksmBalance ? ksmBalance.toHuman() : '...' }}</span></div>
+            <div>
+              <label>Enter your ERC20 wallet to get rewarded</label>
+              <div style="display: flex; width: 100%">
+                <input placeholder="Only ERC20 Address" type="text" v-model="erc20Address" :readonly="isLinked"/>
+                <button class="link-btn" style="border-top-left-radius: 0; border-bottom-left-radius: 0"
+                        :disabled="isSigning || !erc20Address || !validAddress || isLinked"
+                        @click="linkAddress">
+                  {{ isSigning ? 'Loading...' : (isLinked ? 'Linked' : 'Link') }}
+                </button>
+              </div>
+              <span v-show="erc20Address && !isLinked" v-if="!validAddress" style="color: #ff0f0f; font-size: 12px">Invalid Address !</span>
+              <span v-show="erc20Address && !isLinked" v-else style="color: #00ff52; font-size: 12px">Valid Address</span>
             </div>
-            <input placeholder="Enter KSM Amount" type="number" v-model="amount"/>
-          </div>
-          <div class="rule">
-            <input type="checkbox" style="margin: 10px" v-model="policyConfirmed"/>
-            <div>I have read and accept the
-              <a class="css-7rgjox" target="_blank" rel="noopener noreferrer" href="#/privacy">Privacy Policy.</a>
-              and I agree to receive email communications about Karura and Acala, including exclusive launch updates and
-              liquidity provider program.
+            <div>
+              <div style="width: 100%; display: flex">
+                <label style="width: 50%">Enter KSM Amount</label>
+                <div v-show="selectedAccount" style="width: 50%; text-align: right">
+                  <span>Balance: {{ ksmBalance ? ksmBalance.toHuman() : '...' }}</span></div>
+              </div>
+              <input placeholder="KSM Amount" type="number" v-model="amount"/>
             </div>
+            <div class="rule">
+              <input type="checkbox" class="checkbox" v-model="policyConfirmed"/>
+              <div>I have read and accept the
+                <a class="css-7rgjox" target="_blank" rel="noopener noreferrer" href="#/privacy">Privacy Policy.</a>
+                and I agree to receive email communications about Karura and Acala, including exclusive launch updates and
+                liquidity provider program.
+              </div>
+            </div>
+            <button class="link-btn"
+                    style="width: 100%; background: linear-gradient(273.09deg, #D62860 0.01%, #FF919D 48.66%, #00E0FF 100%);"
+                    :disabled="!isLinked || !amount || !selectedAccount || isSubmitting || !policyConfirmed"
+                    @click.prevent="submit" title="Complete link erc20 wallet and fill amount first">
+              {{
+                !isLinked && !isSigning ? 'Link ERC20 wallet before transfer' : isSubmitting ? 'Transfering' : 'Sign transfer'
+              }}
+            </button>
           </div>
-          <button class="link-btn"
-                  style="width: 100%; background: linear-gradient(273.09deg, #D62860 0.01%, #FF919D 48.66%, #00E0FF 100%);"
-                  :disabled="!isLinked || !amount || !selectedAccount || isSubmitting || !policyConfirmed"
-                  @click.prevent="submit" title="Complete link erc20 wallet and fill amount first">
-            {{
-              !isLinked && !isSigning ? 'Link ERC20 wallet before transfer' : isSubmitting ? 'Transfering' : 'Sign transfer'
-            }}
-          </button>
-        </div>
-        <div v-show="message" variant="info">
-          <pre style="white-space: pre-wrap">{{ message }}</pre>
+          <div v-show="message" variant="info">
+            <pre style="white-space: pre-wrap">{{ message }}</pre>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -341,5 +340,67 @@ export default {
 </script>
 
 <style scoped>
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
 
+.main {
+  width: 600px;
+  background: #1E235D;
+  border-radius: 4px;
+  padding: 48px 80px;
+}
+
+.main .title {
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 42px;
+  margin-top: 0;
+}
+
+.main .form {
+  margin: 0;
+  padding-right: 0;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 24px;
+}
+
+.main .form label {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.main .form .checkbox {
+  margin: 5px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px){
+  .main {
+    width: 90%;
+    padding: 24px;
+  }
+
+  .main .title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .main .form label,
+  .main .form .rule > div {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
 </style>

@@ -3,7 +3,7 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import Notifications from 'vue-notification'
 import PrivacyPolicy from "@/views/PrivacyPolicy";
-// import Transfer from "@/views/Transfer";
+import Transfer from "@/views/Transfer";
 import Home from '@/views/Home'
 
 Vue.use(Notifications)
@@ -21,6 +21,11 @@ const router = new VueRouter({
       path: '/privacy',
       name: 'Policy',
       component: PrivacyPolicy
+    },
+    {
+      path: '/transfer',
+      name: 'Transfer',
+      component: Transfer
     }
   ]
 })

@@ -4,7 +4,7 @@
       <Identicon class="icon" :size="28" theme="polkadot" :value="value && value.address ? value.address : 'none'"/>
       <div class="wrapper">
         <div class="name">{{ value && value.meta ? value.meta.name : 'none' }}</div>
-        <div class="address">{{ value && value.ksm_address ? value.ksm_address : 'none' }}</div>
+        <div class="address">{{ value && value.ksm_address ? corruptAddress(value.ksm_address) : 'none' }}</div>
       </div>
     </div>
     <div class="dropdown-content" v-show="optionsShown">
